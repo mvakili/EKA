@@ -40,16 +40,6 @@
           <Property Name="MaterialID" Type="int" Nullable="false" />
           <Property Name="DateTime" Type="datetime" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Unit">
           <Key>
             <PropertyRef Name="UnitID" />
@@ -91,48 +81,8 @@
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'EKA.dbo.ActiveUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ActiveUser">
-          <Key>
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="PasswordHash" />
-            <PropertyRef Name="InsertDate" />
-            <PropertyRef Name="IsActive" />
-            <PropertyRef Name="LastName" />
-            <PropertyRef Name="IsAdmin" />
-          </Key>
-          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PasswordHash" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="InsertDate" Type="datetime" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsAdmin" Type="bit" Nullable="false" />
-        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="AdminUser">
-          <Key>
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="PasswordHash" />
-            <PropertyRef Name="InsertDate" />
-            <PropertyRef Name="IsActive" />
-            <PropertyRef Name="LastName" />
-            <PropertyRef Name="IsAdmin" />
-          </Key>
-          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PasswordHash" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="InsertDate" Type="datetime" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsAdmin" Type="bit" Nullable="false" />
-        </EntityType>
         <Association Name="FK_material_MaterialGroup">
           <End Role="MaterialGroup" Type="Self.MaterialGroup" Multiplicity="1" />
           <End Role="Material" Type="Self.Material" Multiplicity="*" />
@@ -357,35 +307,10 @@ warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key def
           <EntitySet Name="MaterialExistance" EntityType="Self.MaterialExistance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialGroup" EntityType="Self.MaterialGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnitGroup" EntityType="Self.UnitGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WareHouse" EntityType="Self.WareHouse" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ActiveUser" EntityType="Self.ActiveUser" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ActiveUser].[UserID] AS [UserID], 
-    [ActiveUser].[FirstName] AS [FirstName], 
-    [ActiveUser].[UserName] AS [UserName], 
-    [ActiveUser].[PasswordHash] AS [PasswordHash], 
-    [ActiveUser].[InsertDate] AS [InsertDate], 
-    [ActiveUser].[IsActive] AS [IsActive], 
-    [ActiveUser].[LastName] AS [LastName], 
-    [ActiveUser].[IsAdmin] AS [IsAdmin]
-    FROM [dbo].[ActiveUser] AS [ActiveUser]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AdminUser" EntityType="Self.AdminUser" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AdminUser].[UserID] AS [UserID], 
-    [AdminUser].[FirstName] AS [FirstName], 
-    [AdminUser].[UserName] AS [UserName], 
-    [AdminUser].[PasswordHash] AS [PasswordHash], 
-    [AdminUser].[InsertDate] AS [InsertDate], 
-    [AdminUser].[IsActive] AS [IsActive], 
-    [AdminUser].[LastName] AS [LastName], 
-    [AdminUser].[IsAdmin] AS [IsAdmin]
-    FROM [dbo].[AdminUser] AS [AdminUser]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_material_MaterialGroup" Association="Self.FK_material_MaterialGroup">
             <End Role="MaterialGroup" EntitySet="MaterialGroup" />
             <End Role="Material" EntitySet="Material" />
@@ -472,16 +397,6 @@ warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key def
           <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
           <NavigationProperty Name="WareHouse" Relationship="Self.FK_Order_WareHouse1" FromRole="Order" ToRole="WareHouse" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Unit">
           <Key>
             <PropertyRef Name="UnitID" />
@@ -528,46 +443,6 @@ warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key def
           <NavigationProperty Name="MaterialExistances" Relationship="Self.FK_MaterialExistance_WareHouse" FromRole="WareHouse" ToRole="MaterialExistance" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_WareHouse1" FromRole="WareHouse" ToRole="Order" />
           <NavigationProperty Name="User" Relationship="Self.FK_WareHouse_User" FromRole="WareHouse" ToRole="User" />
-        </EntityType>
-        <EntityType Name="ActiveUser">
-          <Key>
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="PasswordHash" />
-            <PropertyRef Name="InsertDate" />
-            <PropertyRef Name="IsActive" />
-            <PropertyRef Name="LastName" />
-            <PropertyRef Name="IsAdmin" />
-          </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AdminUser">
-          <Key>
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="PasswordHash" />
-            <PropertyRef Name="InsertDate" />
-            <PropertyRef Name="IsActive" />
-            <PropertyRef Name="LastName" />
-            <PropertyRef Name="IsAdmin" />
-          </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_material_MaterialGroup">
           <End Role="MaterialGroup" Type="Self.MaterialGroup" Multiplicity="1" />
@@ -682,13 +557,10 @@ warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key def
           <EntitySet Name="MaterialExistances" EntityType="Self.MaterialExistance" />
           <EntitySet Name="MaterialGroups" EntityType="Self.MaterialGroup" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Units" EntityType="Self.Unit" />
           <EntitySet Name="UnitGroups" EntityType="Self.UnitGroup" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="WareHouses" EntityType="Self.WareHouse" />
-          <EntitySet Name="ActiveUsers" EntityType="Self.ActiveUser" />
-          <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
           <AssociationSet Name="FK_material_MaterialGroup" Association="Self.FK_material_MaterialGroup">
             <End Role="MaterialGroup" EntitySet="MaterialGroups" />
             <End Role="Material" EntitySet="Materials" />
@@ -863,17 +735,6 @@ warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="EKAModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Units">
             <EntityTypeMapping TypeName="EKAModel.Unit">
               <MappingFragment StoreEntitySet="Unit">
@@ -914,34 +775,6 @@ warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key def
                 <ScalarProperty Name="AllowSend" ColumnName="AllowSend" />
                 <ScalarProperty Name="AllowReceive" ColumnName="AllowReceive" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ActiveUsers">
-            <EntityTypeMapping TypeName="EKAModel.ActiveUser">
-              <MappingFragment StoreEntitySet="ActiveUser">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AdminUsers">
-            <EntityTypeMapping TypeName="EKAModel.AdminUser">
-              <MappingFragment StoreEntitySet="AdminUser">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

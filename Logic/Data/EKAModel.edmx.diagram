@@ -4,18 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d4dd7ec4d2cb4c80b6a878dcec83ff7b" Name="Diagram1">
-        <EntityTypeShape EntityType="EKAModel.Material" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EKAModel.MaterialExistance" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EKAModel.MaterialGroup" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="EKAModel.Order" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EKAModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EKAModel.Unit" Width="1.5" PointX="1.5" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="EKAModel.UnitGroup" Width="1.5" PointX="1.5" PointY="14" IsExpanded="true" />
+      <Diagram DiagramId="d4dd7ec4d2cb4c80b6a878dcec83ff7b" Name="Diagram1" ZoomLevel="49">
+        <EntityTypeShape EntityType="EKAModel.Material" Width="1.5" PointX="3.625" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EKAModel.MaterialExistance" Width="1.5" PointX="13.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EKAModel.MaterialGroup" Width="1.5" PointX="3.375" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EKAModel.Order" Width="1.5" PointX="6.625" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EKAModel.Unit" Width="1.5" PointX="6.375" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EKAModel.UnitGroup" Width="1.5" PointX="9.375" PointY="14.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EKAModel.User" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EKAModel.WareHouse" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EKAModel.ActiveUser" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EKAModel.AdminUser" Width="1.5" PointX="7.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EKAModel.WareHouse" Width="1.5" PointX="13" PointY="3.625" IsExpanded="true" />
         <AssociationConnector Association="EKAModel.FK_material_MaterialGroup" ManuallyRouted="false" />
         <AssociationConnector Association="EKAModel.FK_Order_material" ManuallyRouted="false" />
         <AssociationConnector Association="EKAModel.FK_MaterialExistance_MaterialGroup" ManuallyRouted="false" />
