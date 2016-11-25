@@ -1,0 +1,990 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EKAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="MaterialID" />
+          </Key>
+          <Property Name="MaterialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaterialGroupID" Type="int" Nullable="false" />
+          <Property Name="Qty" Type="decimal" Precision="20" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaterialExistance">
+          <Key>
+            <PropertyRef Name="MaterialExistanceID" />
+          </Key>
+          <Property Name="MaterialExistanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaterialGroupID" Type="int" Nullable="false" />
+          <Property Name="WareHouseID" Type="int" Nullable="false" />
+          <Property Name="Qty" Type="decimal" Precision="20" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaterialGroup">
+          <Key>
+            <PropertyRef Name="MaterialGroupID" />
+          </Key>
+          <Property Name="MaterialGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnitID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ToWareHouseID" Type="int" Nullable="false" />
+          <Property Name="MaterialID" Type="int" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="UnitID" />
+          </Key>
+          <Property Name="UnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnitGroupID" Type="int" Nullable="false" />
+          <Property Name="Factor" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnitGroup">
+          <Key>
+            <PropertyRef Name="UnitGroupID" />
+          </Key>
+          <Property Name="UnitGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WareHouse">
+          <Key>
+            <PropertyRef Name="WareHouseID" />
+          </Key>
+          <Property Name="WareHouseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AllowSend" Type="bit" Nullable="false" />
+          <Property Name="AllowReceive" Type="bit" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EKA.dbo.ActiveUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ActiveUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="PasswordHash" />
+            <PropertyRef Name="InsertDate" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="IsAdmin" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="PasswordHash" />
+            <PropertyRef Name="InsertDate" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="IsAdmin" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_material_MaterialGroup">
+          <End Role="MaterialGroup" Type="Self.MaterialGroup" Multiplicity="1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaterialGroup">
+              <PropertyRef Name="MaterialGroupID" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="MaterialGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialExistance_MaterialGroup">
+          <End Role="MaterialGroup" Type="Self.MaterialGroup" Multiplicity="1" />
+          <End Role="MaterialExistance" Type="Self.MaterialExistance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaterialGroup">
+              <PropertyRef Name="MaterialGroupID" />
+            </Principal>
+            <Dependent Role="MaterialExistance">
+              <PropertyRef Name="MaterialGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialExistance_WareHouse">
+          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="1" />
+          <End Role="MaterialExistance" Type="Self.MaterialExistance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WareHouse">
+              <PropertyRef Name="WareHouseID" />
+            </Principal>
+            <Dependent Role="MaterialExistance">
+              <PropertyRef Name="WareHouseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialGroup_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="MaterialGroup" Type="Self.MaterialGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="MaterialGroup">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_material">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_WareHouse1">
+          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WareHouse">
+              <PropertyRef Name="WareHouseID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Unit_UnitGroup">
+          <End Role="UnitGroup" Type="Self.UnitGroup" Multiplicity="1" />
+          <End Role="Unit" Type="Self.Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitGroup">
+              <PropertyRef Name="UnitGroupID" />
+            </Principal>
+            <Dependent Role="Unit">
+              <PropertyRef Name="UnitGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WareHouse_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="WareHouse">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ActivateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddToAdminsUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AllowReceiveWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+          <Parameter Name="WareHouseID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AllowSendWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+          <Parameter Name="WareHouseID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ChangeDetailsOfUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ChangePasswordOfUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="OldPAssword" Type="nvarchar" Mode="In" />
+          <Parameter Name="NewPassword" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="CreateMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="MaterialGroupID" Type="int" Mode="In" />
+          <Parameter Name="Qty" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="CreateMaterialGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="UnitID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CreateNewOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="MaterialID" Type="int" Mode="In" />
+          <Parameter Name="ToWareHouseID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CreateUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="UnitGroupID" Type="int" Mode="In" />
+          <Parameter Name="Factor" Type="real" Mode="In" />
+        </Function>
+        <Function Name="CreateUnitGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="CreateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="CreateWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="AllowReceive" Type="bit" Mode="In" />
+          <Parameter Name="Allowsend" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="DeactivateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DisableAllowReceiveWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="WareHouseID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DisableAllowSendWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="WareHouseID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EnableAllowReceiveWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="WareHouseID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EnableAllowSendWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="WareHouseID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetMaterialWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="MaterialID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="IsActiveUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="IsAdminUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="IsManager" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+          <Parameter Name="WareHouseID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RemoveFromAdminUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RemoveManagerOfWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="WareHouseID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SetManagerToWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ActorID" Type="int" Mode="In" />
+          <Parameter Name="WareHouseID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="EKAModelStoreContainer">
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialExistance" EntityType="Self.MaterialExistance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialGroup" EntityType="Self.MaterialGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitGroup" EntityType="Self.UnitGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WareHouse" EntityType="Self.WareHouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActiveUser" EntityType="Self.ActiveUser" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ActiveUser].[UserID] AS [UserID], 
+    [ActiveUser].[FirstName] AS [FirstName], 
+    [ActiveUser].[UserName] AS [UserName], 
+    [ActiveUser].[PasswordHash] AS [PasswordHash], 
+    [ActiveUser].[InsertDate] AS [InsertDate], 
+    [ActiveUser].[IsActive] AS [IsActive], 
+    [ActiveUser].[LastName] AS [LastName], 
+    [ActiveUser].[IsAdmin] AS [IsAdmin]
+    FROM [dbo].[ActiveUser] AS [ActiveUser]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AdminUser" EntityType="Self.AdminUser" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AdminUser].[UserID] AS [UserID], 
+    [AdminUser].[FirstName] AS [FirstName], 
+    [AdminUser].[UserName] AS [UserName], 
+    [AdminUser].[PasswordHash] AS [PasswordHash], 
+    [AdminUser].[InsertDate] AS [InsertDate], 
+    [AdminUser].[IsActive] AS [IsActive], 
+    [AdminUser].[LastName] AS [LastName], 
+    [AdminUser].[IsAdmin] AS [IsAdmin]
+    FROM [dbo].[AdminUser] AS [AdminUser]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_material_MaterialGroup" Association="Self.FK_material_MaterialGroup">
+            <End Role="MaterialGroup" EntitySet="MaterialGroup" />
+            <End Role="Material" EntitySet="Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialExistance_MaterialGroup" Association="Self.FK_MaterialExistance_MaterialGroup">
+            <End Role="MaterialGroup" EntitySet="MaterialGroup" />
+            <End Role="MaterialExistance" EntitySet="MaterialExistance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialExistance_WareHouse" Association="Self.FK_MaterialExistance_WareHouse">
+            <End Role="WareHouse" EntitySet="WareHouse" />
+            <End Role="MaterialExistance" EntitySet="MaterialExistance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialGroup_Unit" Association="Self.FK_MaterialGroup_Unit">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="MaterialGroup" EntitySet="MaterialGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_material" Association="Self.FK_Order_material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_WareHouse1" Association="Self.FK_Order_WareHouse1">
+            <End Role="WareHouse" EntitySet="WareHouse" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Unit_UnitGroup" Association="Self.FK_Unit_UnitGroup">
+            <End Role="UnitGroup" EntitySet="UnitGroup" />
+            <End Role="Unit" EntitySet="Unit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WareHouse_User" Association="Self.FK_WareHouse_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="WareHouse" EntitySet="WareHouse" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EKAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="MaterialID" />
+          </Key>
+          <Property Name="MaterialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaterialGroupID" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Decimal" Precision="20" Scale="3" Nullable="false" />
+          <NavigationProperty Name="MaterialGroup" Relationship="Self.FK_material_MaterialGroup" FromRole="Material" ToRole="MaterialGroup" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_material" FromRole="Material" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="MaterialExistance">
+          <Key>
+            <PropertyRef Name="MaterialExistanceID" />
+          </Key>
+          <Property Name="MaterialExistanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaterialGroupID" Type="Int32" Nullable="false" />
+          <Property Name="WareHouseID" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Decimal" Precision="20" Scale="3" Nullable="false" />
+          <NavigationProperty Name="MaterialGroup" Relationship="Self.FK_MaterialExistance_MaterialGroup" FromRole="MaterialExistance" ToRole="MaterialGroup" />
+          <NavigationProperty Name="WareHouse" Relationship="Self.FK_MaterialExistance_WareHouse" FromRole="MaterialExistance" ToRole="WareHouse" />
+        </EntityType>
+        <EntityType Name="MaterialGroup">
+          <Key>
+            <PropertyRef Name="MaterialGroupID" />
+          </Key>
+          <Property Name="MaterialGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Materials" Relationship="Self.FK_material_MaterialGroup" FromRole="MaterialGroup" ToRole="Material" />
+          <NavigationProperty Name="MaterialExistances" Relationship="Self.FK_MaterialExistance_MaterialGroup" FromRole="MaterialGroup" ToRole="MaterialExistance" />
+          <NavigationProperty Name="Unit" Relationship="Self.FK_MaterialGroup_Unit" FromRole="MaterialGroup" ToRole="Unit" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ToWareHouseID" Type="Int32" Nullable="false" />
+          <Property Name="MaterialID" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Material" Relationship="Self.FK_Order_material" FromRole="Order" ToRole="Material" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="WareHouse" Relationship="Self.FK_Order_WareHouse1" FromRole="Order" ToRole="WareHouse" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="UnitID" />
+          </Key>
+          <Property Name="UnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitGroupID" Type="Int32" Nullable="false" />
+          <Property Name="Factor" Type="Double" Nullable="false" />
+          <NavigationProperty Name="MaterialGroups" Relationship="Self.FK_MaterialGroup_Unit" FromRole="Unit" ToRole="MaterialGroup" />
+          <NavigationProperty Name="UnitGroup" Relationship="Self.FK_Unit_UnitGroup" FromRole="Unit" ToRole="UnitGroup" />
+        </EntityType>
+        <EntityType Name="UnitGroup">
+          <Key>
+            <PropertyRef Name="UnitGroupID" />
+          </Key>
+          <Property Name="UnitGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Units" Relationship="Self.FK_Unit_UnitGroup" FromRole="UnitGroup" ToRole="Unit" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="WareHouses" Relationship="Self.FK_WareHouse_User" FromRole="User" ToRole="WareHouse" />
+        </EntityType>
+        <EntityType Name="WareHouse">
+          <Key>
+            <PropertyRef Name="WareHouseID" />
+          </Key>
+          <Property Name="WareHouseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AllowSend" Type="Boolean" Nullable="false" />
+          <Property Name="AllowReceive" Type="Boolean" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="MaterialExistances" Relationship="Self.FK_MaterialExistance_WareHouse" FromRole="WareHouse" ToRole="MaterialExistance" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_WareHouse1" FromRole="WareHouse" ToRole="Order" />
+          <NavigationProperty Name="User" Relationship="Self.FK_WareHouse_User" FromRole="WareHouse" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ActiveUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="PasswordHash" />
+            <PropertyRef Name="InsertDate" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="IsAdmin" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="PasswordHash" />
+            <PropertyRef Name="InsertDate" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="IsAdmin" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_material_MaterialGroup">
+          <End Role="MaterialGroup" Type="Self.MaterialGroup" Multiplicity="1" />
+          <End Role="Material" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaterialGroup">
+              <PropertyRef Name="MaterialGroupID" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="MaterialGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_material">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialExistance_MaterialGroup">
+          <End Role="MaterialGroup" Type="Self.MaterialGroup" Multiplicity="1" />
+          <End Role="MaterialExistance" Type="Self.MaterialExistance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaterialGroup">
+              <PropertyRef Name="MaterialGroupID" />
+            </Principal>
+            <Dependent Role="MaterialExistance">
+              <PropertyRef Name="MaterialGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialExistance_WareHouse">
+          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="1" />
+          <End Role="MaterialExistance" Type="Self.MaterialExistance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WareHouse">
+              <PropertyRef Name="WareHouseID" />
+            </Principal>
+            <Dependent Role="MaterialExistance">
+              <PropertyRef Name="WareHouseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialGroup_Unit">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="MaterialGroup" Type="Self.MaterialGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="MaterialGroup">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_WareHouse1">
+          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WareHouse">
+              <PropertyRef Name="WareHouseID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Unit_UnitGroup">
+          <End Role="UnitGroup" Type="Self.UnitGroup" Multiplicity="1" />
+          <End Role="Unit" Type="Self.Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitGroup">
+              <PropertyRef Name="UnitGroupID" />
+            </Principal>
+            <Dependent Role="Unit">
+              <PropertyRef Name="UnitGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WareHouse_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="WareHouse">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EKAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Materials" EntityType="Self.Material" />
+          <EntitySet Name="MaterialExistances" EntityType="Self.MaterialExistance" />
+          <EntitySet Name="MaterialGroups" EntityType="Self.MaterialGroup" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Units" EntityType="Self.Unit" />
+          <EntitySet Name="UnitGroups" EntityType="Self.UnitGroup" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="WareHouses" EntityType="Self.WareHouse" />
+          <EntitySet Name="ActiveUsers" EntityType="Self.ActiveUser" />
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+          <AssociationSet Name="FK_material_MaterialGroup" Association="Self.FK_material_MaterialGroup">
+            <End Role="MaterialGroup" EntitySet="MaterialGroups" />
+            <End Role="Material" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_material" Association="Self.FK_Order_material">
+            <End Role="Material" EntitySet="Materials" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialExistance_MaterialGroup" Association="Self.FK_MaterialExistance_MaterialGroup">
+            <End Role="MaterialGroup" EntitySet="MaterialGroups" />
+            <End Role="MaterialExistance" EntitySet="MaterialExistances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialExistance_WareHouse" Association="Self.FK_MaterialExistance_WareHouse">
+            <End Role="WareHouse" EntitySet="WareHouses" />
+            <End Role="MaterialExistance" EntitySet="MaterialExistances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialGroup_Unit" Association="Self.FK_MaterialGroup_Unit">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="MaterialGroup" EntitySet="MaterialGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_WareHouse1" Association="Self.FK_Order_WareHouse1">
+            <End Role="WareHouse" EntitySet="WareHouses" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Unit_UnitGroup" Association="Self.FK_Unit_UnitGroup">
+            <End Role="UnitGroup" EntitySet="UnitGroups" />
+            <End Role="Unit" EntitySet="Units" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WareHouse_User" Association="Self.FK_WareHouse_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="WareHouse" EntitySet="WareHouses" />
+          </AssociationSet>
+          <FunctionImport Name="ActivateUser" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CreateMaterial" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="MaterialGroupID" Mode="In" Type="Int32" />
+            <Parameter Name="Qty" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CreateMaterialGroup" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="UnitID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CreateNewOrder" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="MaterialID" Mode="In" Type="Int32" />
+            <Parameter Name="ToWareHouseID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CreateUnit" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="UnitGroupID" Mode="In" Type="Int32" />
+            <Parameter Name="Factor" Mode="In" Type="Single" />
+          </FunctionImport>
+          <FunctionImport Name="CreateUnitGroup" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DisableAllowReceiveWareHouse" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="WareHouseID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DisableAllowSendWareHouse" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="WareHouseID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EnableAllowReceiveWareHouse" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="WareHouseID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveManagerOfWareHouse" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="WareHouseID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SetManagerToWareHouse" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="WareHouseID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddToAdminsUsers" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ChangeDetailsOfUser" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ChangePasswordOfUser" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="OldPAssword" Mode="In" Type="String" />
+            <Parameter Name="NewPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeactivateUser" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CreateUser" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="CreateWareHouse" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="AllowReceive" Mode="In" Type="Boolean" />
+            <Parameter Name="Allowsend" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="EnableAllowSendWareHouse" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="WareHouseID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveFromAdminUsers" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EKAModelStoreContainer" CdmEntityContainer="EKAEntities">
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="EKAModel.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+                <ScalarProperty Name="MaterialGroupID" ColumnName="MaterialGroupID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialExistances">
+            <EntityTypeMapping TypeName="EKAModel.MaterialExistance">
+              <MappingFragment StoreEntitySet="MaterialExistance">
+                <ScalarProperty Name="MaterialExistanceID" ColumnName="MaterialExistanceID" />
+                <ScalarProperty Name="MaterialGroupID" ColumnName="MaterialGroupID" />
+                <ScalarProperty Name="WareHouseID" ColumnName="WareHouseID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialGroups">
+            <EntityTypeMapping TypeName="EKAModel.MaterialGroup">
+              <MappingFragment StoreEntitySet="MaterialGroup">
+                <ScalarProperty Name="MaterialGroupID" ColumnName="MaterialGroupID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="EKAModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ToWareHouseID" ColumnName="ToWareHouseID" />
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EKAModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="EKAModel.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnitGroupID" ColumnName="UnitGroupID" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitGroups">
+            <EntityTypeMapping TypeName="EKAModel.UnitGroup">
+              <MappingFragment StoreEntitySet="UnitGroup">
+                <ScalarProperty Name="UnitGroupID" ColumnName="UnitGroupID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="EKAModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WareHouses">
+            <EntityTypeMapping TypeName="EKAModel.WareHouse">
+              <MappingFragment StoreEntitySet="WareHouse">
+                <ScalarProperty Name="WareHouseID" ColumnName="WareHouseID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AllowSend" ColumnName="AllowSend" />
+                <ScalarProperty Name="AllowReceive" ColumnName="AllowReceive" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActiveUsers">
+            <EntityTypeMapping TypeName="EKAModel.ActiveUser">
+              <MappingFragment StoreEntitySet="ActiveUser">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminUsers">
+            <EntityTypeMapping TypeName="EKAModel.AdminUser">
+              <MappingFragment StoreEntitySet="AdminUser">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ActivateUser" FunctionName="EKAModel.Store.ActivateUser" />
+          <FunctionImportMapping FunctionImportName="CreateMaterial" FunctionName="EKAModel.Store.CreateMaterial" />
+          <FunctionImportMapping FunctionImportName="CreateMaterialGroup" FunctionName="EKAModel.Store.CreateMaterialGroup" />
+          <FunctionImportMapping FunctionImportName="CreateNewOrder" FunctionName="EKAModel.Store.CreateNewOrder" />
+          <FunctionImportMapping FunctionImportName="CreateUnit" FunctionName="EKAModel.Store.CreateUnit" />
+          <FunctionImportMapping FunctionImportName="CreateUnitGroup" FunctionName="EKAModel.Store.CreateUnitGroup" />
+          <FunctionImportMapping FunctionImportName="DisableAllowReceiveWareHouse" FunctionName="EKAModel.Store.DisableAllowReceiveWareHouse" />
+          <FunctionImportMapping FunctionImportName="DisableAllowSendWareHouse" FunctionName="EKAModel.Store.DisableAllowSendWareHouse" />
+          <FunctionImportMapping FunctionImportName="EnableAllowReceiveWareHouse" FunctionName="EKAModel.Store.EnableAllowReceiveWareHouse" />
+          <FunctionImportMapping FunctionImportName="RemoveManagerOfWareHouse" FunctionName="EKAModel.Store.RemoveManagerOfWareHouse" />
+          <FunctionImportMapping FunctionImportName="SetManagerToWareHouse" FunctionName="EKAModel.Store.SetManagerToWareHouse" />
+          <FunctionImportMapping FunctionImportName="AddToAdminsUsers" FunctionName="EKAModel.Store.AddToAdminsUsers" />
+          <FunctionImportMapping FunctionImportName="ChangeDetailsOfUser" FunctionName="EKAModel.Store.ChangeDetailsOfUser" />
+          <FunctionImportMapping FunctionImportName="ChangePasswordOfUser" FunctionName="EKAModel.Store.ChangePasswordOfUser" />
+          <FunctionImportMapping FunctionImportName="DeactivateUser" FunctionName="EKAModel.Store.DeactivateUser" />
+          <FunctionImportMapping FunctionImportName="CreateUser" FunctionName="EKAModel.Store.CreateUser" />
+          <FunctionImportMapping FunctionImportName="CreateWareHouse" FunctionName="EKAModel.Store.CreateWareHouse" />
+          <FunctionImportMapping FunctionImportName="EnableAllowSendWareHouse" FunctionName="EKAModel.Store.EnableAllowSendWareHouse" />
+          <FunctionImportMapping FunctionImportName="RemoveFromAdminUsers" FunctionName="EKAModel.Store.RemoveFromAdminUsers" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
