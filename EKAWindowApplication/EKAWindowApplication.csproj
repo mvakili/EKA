@@ -55,19 +55,19 @@
     <Reference Include="System.Xml" />
     <Reference Include="Telerik.WinControls, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Telerik\UI for WinForms Q1 2016\Bin40\Telerik.WinControls.dll</HintPath>
+      <HintPath>lib\Telerik.WinControls.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.WinControls.UI, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Telerik\UI for WinForms Q1 2016\Bin40\Telerik.WinControls.UI.dll</HintPath>
+      <HintPath>lib\Telerik.WinControls.UI.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.WinControls.UI.Design, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Telerik\UI for WinForms Q1 2016\Bin40\Telerik.WinControls.UI.Design.dll</HintPath>
+      <HintPath>lib\Telerik.WinControls.UI.Design.dll</HintPath>
     </Reference>
     <Reference Include="TelerikCommon, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Telerik\UI for WinForms Q1 2016\Bin40\TelerikCommon.dll</HintPath>
+      <HintPath>lib\TelerikCommon.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +130,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\id-card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\Telerik.WinControls.dll" />
+    <Content Include="lib\Telerik.WinControls.UI.Design.dll" />
+    <Content Include="lib\Telerik.WinControls.UI.dll" />
+    <Content Include="lib\Telerik.WinControls.UI.XML" />
+    <Content Include="lib\Telerik.WinControls.XML" />
+    <Content Include="lib\TelerikCommon.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
