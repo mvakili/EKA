@@ -1,2 +1,7 @@
 Telerik.WinControls.Themes.Office2010BlackTheme, Telerik.WinControls.Themes.Office2010Black, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
+Telerik.WinControls.RadThemeManager, Telerik.WinControls, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
 Telerik.WinControls.UI.RadLabel, Telerik.WinControls.UI, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
+Telerik.WinControls.UI.RadStatusStrip, Telerik.WinControls.UI, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
+Telerik.WinControls.UI.RadTextBox, Telerik.WinControls.UI, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
+Telerik.WinControls.UI.RadButton, Telerik.WinControls.UI, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
+Telerik.WinControls.UI.RadRibbonBar, Telerik.WinControls.UI, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e

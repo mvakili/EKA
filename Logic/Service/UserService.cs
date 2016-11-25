@@ -10,6 +10,8 @@ namespace Logic.Service
     public static class UserService
     {
         public static User Me;
+        public static bool IsLoggedIn => Me != null;
+
         public static User CreateUser(string userName, string password, string firstName, string lastName, bool isActive = true)
         {
             var db = new EKAEntities();
@@ -63,12 +65,12 @@ namespace Logic.Service
 
         public static int Login(string userName, string password)
         {
-            if (Me != null) return -2;
+            if (Me != null) return -3;
             var db = new EKAEntities();
             var passwordHash = CreateMD5(password);
             var user = db.Users.FirstOrDefault(u => u.UserName == userName && u.PasswordHash == passwordHash);
             if (user == null) return -1;
-            if (!user.IsActive) return -1;
+            if (!user.IsActive) return -2;
             Me = user;
 
             return 0;
