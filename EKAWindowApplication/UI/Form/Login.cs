@@ -18,8 +18,6 @@ namespace EKAWindowApplication.UI.Form
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            lblResult.Text = "";
-
             if (Logic.Service.UserService.IsLoggedIn) Logic.Service.UserService.Logout();
 
             var result = Logic.Service.UserService.Login(txtUserName.Text, txtPassword.Text);
@@ -32,7 +30,9 @@ namespace EKAWindowApplication.UI.Form
                     lblResult.Text =
                         $@" خوش آمدید {Logic.Service.UserService.Me.FirstName} {Logic.Service.UserService.Me.LastName}";
                     Hide();
+                    Clear();
                     new Main().ShowDialog();
+                    Show();
                     break;
                 case -1:
                     lblResult.ForeColor = Color.Red;
@@ -49,5 +49,13 @@ namespace EKAWindowApplication.UI.Form
 
             }
         }
+
+        private void Clear()
+        {
+            lblResult.Text = "";
+            txtPassword.Text = "";
+            txtUserName.Text = "";
+        }
     }
+
 }
