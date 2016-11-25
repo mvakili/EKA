@@ -69,12 +69,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\ActiveUser.cs">
-      <DependentUpon>EKAModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\AdminUser.cs">
-      <DependentUpon>EKAModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\EKAModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,9 +94,6 @@
       <DependentUpon>EKAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Order.cs">
-      <DependentUpon>EKAModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\sysdiagram.cs">
       <DependentUpon>EKAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Unit.cs">
