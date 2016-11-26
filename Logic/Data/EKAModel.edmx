@@ -79,10 +79,6 @@
           <Property Name="AllowReceive" Type="bit" Nullable="false" />
           <Property Name="UserID" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EKA.dbo.ActiveUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <Association Name="FK_material_MaterialGroup">
           <End Role="MaterialGroup" Type="Self.MaterialGroup" Multiplicity="1" />
           <End Role="Material" Type="Self.Material" Multiplicity="*" />
@@ -195,7 +191,7 @@ warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key def
           <Parameter Name="ActorID" Type="int" Mode="In" />
           <Parameter Name="UserID" Type="int" Mode="In" />
         </Function>
-        <Function Name="AddToAdminsUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="AddToAdminUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ActorID" Type="int" Mode="In" />
           <Parameter Name="UserID" Type="int" Mode="In" />
         </Function>
@@ -647,10 +643,6 @@ warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key def
             <Parameter Name="WareHouseID" Mode="In" Type="Int32" />
             <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="AddToAdminsUsers" ReturnType="Collection(Int32)">
-            <Parameter Name="ActorID" Mode="In" Type="Int32" />
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="ChangeDetailsOfUser" ReturnType="Collection(Int32)">
             <Parameter Name="ActorID" Mode="In" Type="Int32" />
             <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -686,6 +678,10 @@ warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key def
             <Parameter Name="WareHouseID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="RemoveFromAdminUsers" ReturnType="Collection(Int32)">
+            <Parameter Name="ActorID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddToAdminUsers" ReturnType="Collection(Int32)">
             <Parameter Name="ActorID" Mode="In" Type="Int32" />
             <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -789,7 +785,6 @@ warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key def
           <FunctionImportMapping FunctionImportName="EnableAllowReceiveWareHouse" FunctionName="EKAModel.Store.EnableAllowReceiveWareHouse" />
           <FunctionImportMapping FunctionImportName="RemoveManagerOfWareHouse" FunctionName="EKAModel.Store.RemoveManagerOfWareHouse" />
           <FunctionImportMapping FunctionImportName="SetManagerToWareHouse" FunctionName="EKAModel.Store.SetManagerToWareHouse" />
-          <FunctionImportMapping FunctionImportName="AddToAdminsUsers" FunctionName="EKAModel.Store.AddToAdminsUsers" />
           <FunctionImportMapping FunctionImportName="ChangeDetailsOfUser" FunctionName="EKAModel.Store.ChangeDetailsOfUser" />
           <FunctionImportMapping FunctionImportName="ChangePasswordOfUser" FunctionName="EKAModel.Store.ChangePasswordOfUser" />
           <FunctionImportMapping FunctionImportName="DeactivateUser" FunctionName="EKAModel.Store.DeactivateUser" />
@@ -797,6 +792,7 @@ warning 6002: The table/view 'EKA.dbo.AdminUser' does not have a primary key def
           <FunctionImportMapping FunctionImportName="CreateWareHouse" FunctionName="EKAModel.Store.CreateWareHouse" />
           <FunctionImportMapping FunctionImportName="EnableAllowSendWareHouse" FunctionName="EKAModel.Store.EnableAllowSendWareHouse" />
           <FunctionImportMapping FunctionImportName="RemoveFromAdminUsers" FunctionName="EKAModel.Store.RemoveFromAdminUsers" />
+          <FunctionImportMapping FunctionImportName="AddToAdminUsers" FunctionName="EKAModel.Store.AddToAdminUsers" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

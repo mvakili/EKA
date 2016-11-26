@@ -203,19 +203,6 @@ namespace Logic.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SetManagerToWareHouse", actorIDParameter, wareHouseIDParameter, userIDParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> AddToAdminsUsers(Nullable<int> actorID, Nullable<int> userID)
-        {
-            var actorIDParameter = actorID.HasValue ?
-                new ObjectParameter("ActorID", actorID) :
-                new ObjectParameter("ActorID", typeof(int));
-    
-            var userIDParameter = userID.HasValue ?
-                new ObjectParameter("UserID", userID) :
-                new ObjectParameter("UserID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("AddToAdminsUsers", actorIDParameter, userIDParameter);
-        }
-    
         public virtual ObjectResult<Nullable<int>> ChangeDetailsOfUser(Nullable<int> actorID, Nullable<int> userID, string firstName, string lastName)
         {
             var actorIDParameter = actorID.HasValue ?
@@ -345,6 +332,19 @@ namespace Logic.Data
                 new ObjectParameter("UserID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("RemoveFromAdminUsers", actorIDParameter, userIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> AddToAdminUsers(Nullable<int> actorID, Nullable<int> userID)
+        {
+            var actorIDParameter = actorID.HasValue ?
+                new ObjectParameter("ActorID", actorID) :
+                new ObjectParameter("ActorID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("AddToAdminUsers", actorIDParameter, userIDParameter);
         }
     }
 }

@@ -52,7 +52,7 @@ namespace Logic.Service
         public static int AddToAdminsUsers(User user)
         {
             var db = new EKAEntities();
-            var result = db.AddToAdminsUsers(Me.UserID, user.UserID).Single().Value;
+            var result = db.AddToAdminUsers(Me.UserID, user.UserID).Single().Value;
             return result;
         }
 
