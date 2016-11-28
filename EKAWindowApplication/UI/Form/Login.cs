@@ -22,7 +22,6 @@ namespace EKAWindowApplication.UI.Form
 
             var result = Logic.Service.UserService.Login(txtUserName.Text, txtPassword.Text);
             
-            // Login successful
             switch (result)
             {
                 case 0:
