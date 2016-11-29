@@ -31,25 +31,25 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.radStatusStrip1 = new Telerik.WinControls.UI.RadStatusStrip();
             this.lblUserDetails = new Telerik.WinControls.UI.RadLabelElement();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.radRibbonBar1 = new Telerik.WinControls.UI.RadRibbonBar();
             this.commandBarSeparator1 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.btnExit = new Telerik.WinControls.UI.RadButtonElement();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radRibbonBar1 = new Telerik.WinControls.UI.RadRibbonBar();
             this.ribbonTab1 = new Telerik.WinControls.UI.RibbonTab();
-            this.ribbonTab2 = new Telerik.WinControls.UI.RibbonTab();
-            this.ribbonTab3 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup1 = new Telerik.WinControls.UI.RadRibbonBarGroup();
-            this.radRibbonBarGroup2 = new Telerik.WinControls.UI.RadRibbonBarGroup();
-            this.btnWareHouse = new Telerik.WinControls.UI.RadButtonElement();
             this.btnMaterial = new Telerik.WinControls.UI.RadButtonElement();
             this.btnMaterialGroup = new Telerik.WinControls.UI.RadButtonElement();
             this.btnUnit = new Telerik.WinControls.UI.RadButtonElement();
             this.btnUnitGroup = new Telerik.WinControls.UI.RadButtonElement();
+            this.radRibbonBarGroup2 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.btnWareHouse = new Telerik.WinControls.UI.RadButtonElement();
+            this.ribbonTab2 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup3 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.btnOrder = new Telerik.WinControls.UI.RadButtonElement();
             this.radRibbonBarGroup4 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.btnMaterialExistance = new Telerik.WinControls.UI.RadButtonElement();
             this.btnOrderReport = new Telerik.WinControls.UI.RadButtonElement();
+            this.ribbonTab3 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup5 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.btnUser = new Telerik.WinControls.UI.RadButtonElement();
             this.btnWareHouseManager = new Telerik.WinControls.UI.RadButtonElement();
@@ -64,11 +64,10 @@
             this.lblUserDetails,
             this.commandBarSeparator1,
             this.btnExit});
-            this.radStatusStrip1.Location = new System.Drawing.Point(0, 503);
-            this.radStatusStrip1.Margin = new System.Windows.Forms.Padding(4);
+            this.radStatusStrip1.Location = new System.Drawing.Point(0, 410);
             this.radStatusStrip1.Name = "radStatusStrip1";
             this.radStatusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radStatusStrip1.Size = new System.Drawing.Size(677, 28);
+            this.radStatusStrip1.Size = new System.Drawing.Size(515, 24);
             this.radStatusStrip1.SizingGrip = false;
             this.radStatusStrip1.TabIndex = 1;
             this.radStatusStrip1.Text = "radStatusStrip1";
@@ -76,18 +75,27 @@
             // lblUserDetails
             // 
             this.lblUserDetails.Name = "lblUserDetails";
-            this.radStatusStrip1.SetSpring(this.lblUserDetails, false);
             this.lblUserDetails.Text = "";
             this.lblUserDetails.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.lblUserDetails.TextWrap = true;
             // 
+            // commandBarSeparator1
+            // 
+            this.commandBarSeparator1.Name = "commandBarSeparator1";
+            this.commandBarSeparator1.VisibleInOverflowMenu = false;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Text = "خروج";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 165);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(0, 134);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(677, 338);
+            this.panel1.Size = new System.Drawing.Size(515, 276);
             this.panel1.TabIndex = 2;
             // 
             // radRibbonBar1
@@ -101,6 +109,7 @@
             // 
             this.radRibbonBar1.ExitButton.Text = "Exit";
             this.radRibbonBar1.Location = new System.Drawing.Point(0, 0);
+            this.radRibbonBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radRibbonBar1.Name = "radRibbonBar1";
             // 
             // 
@@ -111,7 +120,7 @@
             // 
             this.radRibbonBar1.RootElement.StretchVertically = true;
             this.radRibbonBar1.ShowExpandButton = false;
-            this.radRibbonBar1.Size = new System.Drawing.Size(677, 165);
+            this.radRibbonBar1.Size = new System.Drawing.Size(515, 134);
             this.radRibbonBar1.StartButtonImage = ((System.Drawing.Image)(resources.GetObject("radRibbonBar1.StartButtonImage")));
             this.radRibbonBar1.TabIndex = 5;
             this.radRibbonBar1.Text = "EKA سیستم انبارداری";
@@ -127,43 +136,14 @@
             ((Telerik.WinControls.UI.RadApplicationMenuButtonElement)(this.radRibbonBar1.GetChildAt(0).GetChildAt(5))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
             ((Telerik.WinControls.UI.StackLayoutElement)(this.radRibbonBar1.GetChildAt(0).GetChildAt(6))).Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
-            // commandBarSeparator1
-            // 
-            this.commandBarSeparator1.Name = "commandBarSeparator1";
-            this.radStatusStrip1.SetSpring(this.commandBarSeparator1, false);
-            this.commandBarSeparator1.Text = "";
-            this.commandBarSeparator1.VisibleInOverflowMenu = false;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Name = "btnExit";
-            this.radStatusStrip1.SetSpring(this.btnExit, false);
-            this.btnExit.Text = "خروج";
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
             // ribbonTab1
             // 
+            this.ribbonTab1.IsSelected = true;
             this.ribbonTab1.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup1,
             this.radRibbonBarGroup2});
             this.ribbonTab1.Name = "ribbonTab1";
             this.ribbonTab1.Text = "تعاریف";
-            // 
-            // ribbonTab2
-            // 
-            this.ribbonTab2.IsSelected = true;
-            this.ribbonTab2.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.radRibbonBarGroup3,
-            this.radRibbonBarGroup4});
-            this.ribbonTab2.Name = "ribbonTab2";
-            this.ribbonTab2.Text = "انبار";
-            // 
-            // ribbonTab3
-            // 
-            this.ribbonTab3.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.radRibbonBarGroup5});
-            this.ribbonTab3.Name = "ribbonTab3";
-            this.ribbonTab3.Text = "کاربران";
             // 
             // radRibbonBarGroup1
             // 
@@ -176,19 +156,6 @@
             this.radRibbonBarGroup1.Name = "radRibbonBarGroup1";
             this.radRibbonBarGroup1.StretchHorizontally = false;
             this.radRibbonBarGroup1.Text = "کالا";
-            // 
-            // radRibbonBarGroup2
-            // 
-            this.radRibbonBarGroup2.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.btnWareHouse});
-            this.radRibbonBarGroup2.Name = "radRibbonBarGroup2";
-            this.radRibbonBarGroup2.Text = "انبار";
-            // 
-            // btnWareHouse
-            // 
-            this.btnWareHouse.Name = "btnWareHouse";
-            this.btnWareHouse.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.btnWareHouse.Text = "انبار";
             // 
             // btnMaterial
             // 
@@ -217,6 +184,28 @@
             this.btnUnitGroup.Name = "btnUnitGroup";
             this.btnUnitGroup.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnUnitGroup.Text = "گروه های واحدی";
+            // 
+            // radRibbonBarGroup2
+            // 
+            this.radRibbonBarGroup2.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.btnWareHouse});
+            this.radRibbonBarGroup2.Name = "radRibbonBarGroup2";
+            this.radRibbonBarGroup2.Text = "انبار";
+            // 
+            // btnWareHouse
+            // 
+            this.btnWareHouse.Name = "btnWareHouse";
+            this.btnWareHouse.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnWareHouse.Text = "انبار";
+            // 
+            // ribbonTab2
+            // 
+            this.ribbonTab2.IsSelected = false;
+            this.ribbonTab2.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radRibbonBarGroup3,
+            this.radRibbonBarGroup4});
+            this.ribbonTab2.Name = "ribbonTab2";
+            this.ribbonTab2.Text = "انبار";
             // 
             // radRibbonBarGroup3
             // 
@@ -251,6 +240,13 @@
             this.btnOrderReport.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnOrderReport.Text = "حواله";
             // 
+            // ribbonTab3
+            // 
+            this.ribbonTab3.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radRibbonBarGroup5});
+            this.ribbonTab3.Name = "ribbonTab3";
+            this.ribbonTab3.Text = "کاربران";
+            // 
             // radRibbonBarGroup5
             // 
             this.radRibbonBarGroup5.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -273,13 +269,13 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 531);
+            this.ClientSize = new System.Drawing.Size(515, 434);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.radRibbonBar1);
             this.Controls.Add(this.radStatusStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             // 
             // 
