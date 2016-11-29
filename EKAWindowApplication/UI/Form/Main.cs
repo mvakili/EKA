@@ -21,5 +21,10 @@ namespace EKAWindowApplication.UI.Form
         {
             lblUserDetails.Text = $@"{UserService.Me.FirstName} {UserService.Me.LastName}";
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
