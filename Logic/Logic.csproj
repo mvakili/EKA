@@ -111,6 +111,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\MaterialService.cs" />
+    <Compile Include="Service\ServiceResult.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\WareHouseService.cs" />
   </ItemGroup>

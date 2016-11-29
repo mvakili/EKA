@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Logic.Service;
 using Telerik.WinControls;
 
 namespace EKAWindowApplication.UI.Form
@@ -23,9 +24,9 @@ namespace EKAWindowApplication.UI.Form
             var result = Logic.Service.UserService.Login(txtUserName.Text, txtPassword.Text);
             
 
-            switch (result)
+            switch (result.Status)
             {
-                case 0:
+                case ResultStatus.Ok:
                     lblResult.ForeColor = Color.DarkGreen;
                     lblResult.Text =
                         $@" خوش آمدید {Logic.Service.UserService.Me.FirstName} {Logic.Service.UserService.Me.LastName}";
@@ -34,13 +35,13 @@ namespace EKAWindowApplication.UI.Form
                     new Main().ShowDialog();
                     Show();
                     break;
-                case -1:
+                case ResultStatus.NotFound:
                     lblResult.ForeColor = Color.Red;
                     lblResult.Text = @"نام کاربری/ رمز عبور وارد شده صحیح نمی باشد";
                     break;
-                case -2:
+                case ResultStatus.AccessFail:
                     lblResult.ForeColor = Color.DarkOrange;
-                    lblResult.Text = @"حساب کاربری شما غیرفعال می باشد";
+                    lblResult.Text = @"اجازه ی ورود ندارید";
                     break;
                 default:
                     lblResult.ForeColor = Color.Black;

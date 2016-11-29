@@ -9,48 +9,91 @@ namespace Logic.Service
 {
     public static class WareHouseService
     {
-        public static WareHouse CreateWareHouse(string name, bool allowReceive = true, bool allowSend = true)
+        public static ServiceResult<WareHouse> CreateWareHouse(string name, bool allowReceive = true, bool allowSend = true)
         {
+            var result = new ServiceResult<WareHouse>();
             var db = new EKAEntities();
-            var result = db.CreateWareHouse(UserService.Me.UserID, name, allowReceive, allowSend).Single().Value;
-            if (result > 0)
-                return db.WareHouses.Find(result);
-            return null;
-        }
-        public static int SetManagerToWareHouse(WareHouse wareHouse, User user)
-        {
-            var db = new EKAEntities();
-            var result = db.SetManagerToWareHouse(UserService.Me.UserID, wareHouse.WareHouseID, user.UserID).Single().Value;
+            var spResult = db.CreateWareHouse(UserService.Me.UserID, name, allowReceive, allowSend).Single().Value;
+            if (spResult > 0)
+                result.Result = db.WareHouses.Find(spResult);
             return result;
         }
-        public static int RemoveManagerOfWareHouse(WareHouse wareHouse)
+        public static ServiceResult SetManagerToWareHouse(WareHouse wareHouse, User user)
         {
+            var result = new ServiceResult();
             var db = new EKAEntities();
-            var result = db.RemoveManagerOfWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
+            var spResult = db.SetManagerToWareHouse(UserService.Me.UserID, wareHouse.WareHouseID, user.UserID).Single().Value;
+            switch (spResult)
+            {
+                case -1: result.Status = ResultStatus.AccessFail; break;
+                case 0: result.Status = ResultStatus.Ok; break;
+                default: result.Status = ResultStatus.Unknown; break;
+            }
             return result;
         }
-        public static int DisableAllowSendWareHouse(WareHouse wareHouse)
+        public static ServiceResult RemoveManagerOfWareHouse(WareHouse wareHouse)
         {
+            var result = new ServiceResult();
             var db = new EKAEntities();
-            var result = db.DisableAllowSendWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
+            var spResult = db.RemoveManagerOfWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
+            switch (spResult)
+            {
+                case -1: result.Status = ResultStatus.AccessFail; break;
+                case 0: result.Status = ResultStatus.Ok; break;
+                default: result.Status = ResultStatus.Unknown; break;
+            }
             return result;
         }
-        public static int EnableAllowSendWareHouse(WareHouse wareHouse)
+        public static ServiceResult DisableAllowSendWareHouse(WareHouse wareHouse)
         {
+            var result = new ServiceResult();
             var db = new EKAEntities();
-            var result = db.EnableAllowSendWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
+            var spResult = db.DisableAllowSendWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
+            switch (spResult)
+            {
+                case -1: result.Status = ResultStatus.AccessFail; break;
+                case 0: result.Status = ResultStatus.Ok; break;
+                default: result.Status = ResultStatus.Unknown; break;
+            }
             return result;
         }
-        public static int DisableAllowReceiveWareHouse(WareHouse wareHouse)
+        public static ServiceResult EnableAllowSendWareHouse(WareHouse wareHouse)
         {
+            var result = new ServiceResult();
             var db = new EKAEntities();
-            var result = db.DisableAllowReceiveWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
+            var spResult = db.EnableAllowSendWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
+            switch (spResult)
+            {
+                case -1: result.Status = ResultStatus.AccessFail; break;
+                case 0: result.Status = ResultStatus.Ok; break;
+                default: result.Status = ResultStatus.Unknown; break;
+            }
             return result;
         }
-        public static int EnableAllowReceiveWareHouse(WareHouse wareHouse)
+        public static ServiceResult DisableAllowReceiveWareHouse(WareHouse wareHouse)
         {
+            var result = new ServiceResult();
             var db = new EKAEntities();
-            var result = db.EnableAllowReceiveWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
+            var spResult = db.DisableAllowReceiveWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
+            switch (spResult)
+            {
+                case -1: result.Status = ResultStatus.AccessFail; break;
+                case 0: result.Status = ResultStatus.Ok; break;
+                default: result.Status = ResultStatus.Unknown; break;
+            }
+            return result;
+        }
+        public static ServiceResult EnableAllowReceiveWareHouse(WareHouse wareHouse)
+        {
+            var result = new ServiceResult();
+            var db = new EKAEntities();
+            var spResult = db.EnableAllowReceiveWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
+            switch (spResult)
+            {
+                case -1: result.Status = ResultStatus.AccessFail; break;
+                case 0: result.Status = ResultStatus.Ok; break;
+                default: result.Status = ResultStatus.Unknown; break;
+            }
             return result;
         }
     }

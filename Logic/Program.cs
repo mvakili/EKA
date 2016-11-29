@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Logic.Service;
 
 namespace Logic
 {
@@ -10,7 +11,7 @@ namespace Logic
     {
         static void Main(string[] args)
         {
-            if (Service.UserService.Login("zahra", "ab148%11") == 0)
+            if (Service.UserService.Login("zahra", "ab148%11").Status == ResultStatus.Ok)
             {
                 Console.WriteLine("Logged in");
             } else
