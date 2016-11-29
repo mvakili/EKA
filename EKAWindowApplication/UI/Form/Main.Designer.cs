@@ -53,8 +53,14 @@
             this.radRibbonBarGroup5 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.btnUser = new Telerik.WinControls.UI.RadButtonElement();
             this.btnWareHouseManager = new Telerik.WinControls.UI.RadButtonElement();
+            this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
+            this.ribbonTab4 = new Telerik.WinControls.UI.RibbonTab();
+            this.radRibbonBarGroup6 = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.btnChangePassword = new Telerik.WinControls.UI.RadButtonElement();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radRibbonBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +74,7 @@
             this.radStatusStrip1.Margin = new System.Windows.Forms.Padding(4);
             this.radStatusStrip1.Name = "radStatusStrip1";
             this.radStatusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radStatusStrip1.Size = new System.Drawing.Size(677, 28);
+            this.radStatusStrip1.Size = new System.Drawing.Size(680, 28);
             this.radStatusStrip1.SizingGrip = false;
             this.radStatusStrip1.TabIndex = 1;
             this.radStatusStrip1.Text = "radStatusStrip1";
@@ -83,11 +89,12 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.radPageView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 165);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(677, 338);
+            this.panel1.Size = new System.Drawing.Size(680, 338);
             this.panel1.TabIndex = 2;
             // 
             // radRibbonBar1
@@ -95,7 +102,8 @@
             this.radRibbonBar1.CommandTabs.AddRange(new Telerik.WinControls.RadItem[] {
             this.ribbonTab1,
             this.ribbonTab2,
-            this.ribbonTab3});
+            this.ribbonTab3,
+            this.ribbonTab4});
             // 
             // 
             // 
@@ -111,7 +119,7 @@
             // 
             this.radRibbonBar1.RootElement.StretchVertically = true;
             this.radRibbonBar1.ShowExpandButton = false;
-            this.radRibbonBar1.Size = new System.Drawing.Size(677, 165);
+            this.radRibbonBar1.Size = new System.Drawing.Size(680, 165);
             this.radRibbonBar1.StartButtonImage = ((System.Drawing.Image)(resources.GetObject("radRibbonBar1.StartButtonImage")));
             this.radRibbonBar1.TabIndex = 5;
             this.radRibbonBar1.Text = "EKA سیستم انبارداری";
@@ -151,7 +159,6 @@
             // 
             // ribbonTab2
             // 
-            this.ribbonTab2.IsSelected = true;
             this.ribbonTab2.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup3,
             this.radRibbonBarGroup4});
@@ -196,6 +203,7 @@
             this.btnMaterial.Name = "btnMaterial";
             this.btnMaterial.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnMaterial.Text = "کالا";
+            this.btnMaterial.Click += new System.EventHandler(this.btnMaterial_Click);
             // 
             // btnMaterialGroup
             // 
@@ -271,11 +279,47 @@
             this.btnWareHouseManager.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnWareHouseManager.Text = "دسترسی به انبار";
             // 
+            // radPageView1
+            // 
+            this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radPageView1.Location = new System.Drawing.Point(0, 0);
+            this.radPageView1.Name = "radPageView1";
+            this.radPageView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            // 
+            // 
+            // 
+            this.radPageView1.RootElement.FitToSizeMode = Telerik.WinControls.RadFitToSizeMode.FitToParentContent;
+            this.radPageView1.Size = new System.Drawing.Size(680, 338);
+            this.radPageView1.TabIndex = 0;
+            this.radPageView1.Text = "radPageView1";
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).ShowItemCloseButton = true;
+            // 
+            // ribbonTab4
+            // 
+            this.ribbonTab4.IsSelected = true;
+            this.ribbonTab4.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radRibbonBarGroup6});
+            this.ribbonTab4.Name = "ribbonTab4";
+            this.ribbonTab4.Text = "تنظیمات";
+            // 
+            // radRibbonBarGroup6
+            // 
+            this.radRibbonBarGroup6.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.btnChangePassword});
+            this.radRibbonBarGroup6.Name = "radRibbonBarGroup6";
+            this.radRibbonBarGroup6.Text = "کحساب کاربری";
+            // 
+            // btnChangePassword
+            // 
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnChangePassword.Text = "تغییر رمز";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 531);
+            this.ClientSize = new System.Drawing.Size(680, 531);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.radRibbonBar1);
             this.Controls.Add(this.radStatusStrip1);
@@ -288,7 +332,9 @@
             this.Text = "EKA سیستم انبارداری";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).EndInit();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radRibbonBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -322,5 +368,9 @@
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup5;
         private Telerik.WinControls.UI.RadButtonElement btnUser;
         private Telerik.WinControls.UI.RadButtonElement btnWareHouseManager;
+        private Telerik.WinControls.UI.RadPageView radPageView1;
+        private Telerik.WinControls.UI.RibbonTab ribbonTab4;
+        private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup6;
+        private Telerik.WinControls.UI.RadButtonElement btnChangePassword;
     }
 }
