@@ -49,7 +49,7 @@
             // lblUserName
             // 
             this.lblUserName.Location = new System.Drawing.Point(160, 145);
-            this.lblUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lblUserName.Margin = new System.Windows.Forms.Padding(2);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblUserName.Size = new System.Drawing.Size(54, 18);
@@ -60,7 +60,7 @@
             // radLabel1
             // 
             this.radLabel1.Location = new System.Drawing.Point(160, 181);
-            this.radLabel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.radLabel1.Size = new System.Drawing.Size(48, 18);
@@ -71,7 +71,7 @@
             // txtUserName
             // 
             this.txtUserName.Location = new System.Drawing.Point(52, 144);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(2);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(94, 20);
             this.txtUserName.TabIndex = 2;
@@ -79,7 +79,7 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(52, 181);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(94, 20);
@@ -88,7 +88,7 @@
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(52, 226);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(69, 24);
             this.btnLogin.TabIndex = 4;
@@ -101,7 +101,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(73, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(73, 77);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -112,7 +112,7 @@
             // 
             this.lblResult.AutoSize = false;
             this.lblResult.Location = new System.Drawing.Point(9, 115);
-            this.lblResult.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lblResult.Margin = new System.Windows.Forms.Padding(2);
             this.lblResult.Name = "lblResult";
             this.lblResult.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblResult.Size = new System.Drawing.Size(231, 24);
@@ -133,6 +133,7 @@
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.radLabel1);
             this.Controls.Add(this.lblUserName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(272, 309);
             this.MinimizeBox = false;
