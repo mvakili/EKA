@@ -222,6 +222,10 @@
     <None Include="Resources\circle-with-check-symbol1.png" />
     <None Include="Resources\cancel.png" />
     <Content Include="photo_2016-11-29_19-02-57.ico" />
+    <None Include="Resources\signs1.ico" />
+    <None Include="Resources\delete1.ico" />
+    <None Include="Resources\edit1.ico" />
+    <None Include="Resources\search1.ico" />
     <Content Include="signs.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
