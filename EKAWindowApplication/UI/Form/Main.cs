@@ -67,5 +67,15 @@ namespace EKAWindowApplication.UI.Form
         {
             ShowForm(this, new Material());
         }
+
+        private void btnUnitGroup_Click(object sender, EventArgs e)
+        {
+            ShowForm(this, new UnitGroup());
+        }
+
+        private void btnUnit_Click(object sender, EventArgs e)
+        {
+            ShowForm(this, new Unit());
+        }
     }
 }

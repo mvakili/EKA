@@ -61,6 +61,24 @@ namespace EKAWindowApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to اجازه ی حذف ندارید.
+        /// </summary>
+        internal static string AccessFail {
+            get {
+                return ResourceManager.GetString("AccessFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطایی در دریافت اظلاعات رخ داد.
+        /// </summary>
+        internal static string BindingError {
+            get {
+                return ResourceManager.GetString("BindingError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap collaboration {
@@ -77,6 +95,33 @@ namespace EKAWindowApplication.Properties {
             get {
                 object obj = ResourceManager.GetObject("id-card", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to هیچ سطری انتخاب نشده است.
+        /// </summary>
+        internal static string NoRowSelected {
+            get {
+                return ResourceManager.GetString("NoRowSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to عملیات موفق بود.
+        /// </summary>
+        internal static string SuccessfulOperation {
+            get {
+                return ResourceManager.GetString("SuccessfulOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطای نامعلوم.
+        /// </summary>
+        internal static string UnknownError {
+            get {
+                return ResourceManager.GetString("UnknownError", resourceCulture);
             }
         }
     }

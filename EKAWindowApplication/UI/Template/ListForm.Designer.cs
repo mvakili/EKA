@@ -75,6 +75,7 @@
             this.btnCancel.Size = new System.Drawing.Size(80, 30);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "رد";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAccept
             // 
@@ -84,12 +85,14 @@
             this.btnAccept.Size = new System.Drawing.Size(80, 30);
             this.btnAccept.TabIndex = 1;
             this.btnAccept.Text = "تایید";
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // ControlsContainer
             // 
             this.ControlsContainer.Location = new System.Drawing.Point(0, 26);
             this.ControlsContainer.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.ControlsContainer.Name = "ControlsContainer";
+            this.ControlsContainer.Padding = new System.Windows.Forms.Padding(0);
             this.ControlsContainer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ControlsContainer.Size = new System.Drawing.Size(974, 121);
             this.ControlsContainer.TabIndex = 0;

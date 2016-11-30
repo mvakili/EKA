@@ -41,5 +41,17 @@ namespace EKAWindowApplication.UI.Template
             InitializeComponent();
             SelectMode = false;
         }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        protected void btnAccept_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
+        }
     }
 }

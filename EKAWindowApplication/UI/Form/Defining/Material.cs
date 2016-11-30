@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using EKAWindowApplication.Properties;
 using EKAWindowApplication.UI.Template;
 using Logic.Service;
-using Telerik.WinControls;
 
 namespace EKAWindowApplication.UI.Form.Defining
 {
     public partial class Material : ListForm, IForm
     {
+        private ServiceResult<IQueryable<Logic.Data.Material>> _data;
         public Material()
         {
             InitializeComponent();
@@ -22,19 +18,19 @@ namespace EKAWindowApplication.UI.Form.Defining
 
         public void Bind()
         {
-            var data = Logic.Service.MaterialService.GetMaterials();
-            if (data.Status != ResultStatus.Ok)
+            _data = MaterialService.GetMaterials();
+            if (_data.Status != ResultStatus.Ok)
             {
-                MessageBox.Show(@"خطایی در دریافت اظلاعات رخ داد");
+                MessageBox.Show(Resources.BindingError);
                 return;
             }
 
-            int materialID;
-            int.TryParse(txtMaterialID.Text,out materialID);
+            int materialId;
+            int.TryParse(txtMaterialID.Text,out materialId);
 
-            rgvList.DataSource = data.Result
+            rgvList.DataSource = _data.Result
                 .Where(r =>  
-                    materialID == 0 || r.MaterialID == materialID
+                    materialId == 0 || r.MaterialID == materialId
                 )
                 .Select(r => new
                 {
@@ -48,7 +44,7 @@ namespace EKAWindowApplication.UI.Form.Defining
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

@@ -42,8 +42,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +63,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Telerik.WinControls.GridView.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.WinControls.RichTextEditor, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Telerik.WinControls.UI.dll</HintPath>
@@ -82,6 +85,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Form\Defining\AddOrEditUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form\Defining\AddOrEditUnit.Designer.cs">
+      <DependentUpon>AddOrEditUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form\Defining\AddOrEditUnitGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form\Defining\AddOrEditUnitGroup.Designer.cs">
+      <DependentUpon>AddOrEditUnitGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form\Defining\Unit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form\Defining\Unit.Designer.cs">
+      <DependentUpon>Unit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form\Defining\UnitGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form\Defining\UnitGroup.Designer.cs">
+      <DependentUpon>UnitGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Form\Defining\Material.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +128,12 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\IForm.cs" />
+    <Compile Include="UI\Template\AddOrEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Template\AddOrEditForm.Designer.cs">
+      <DependentUpon>AddOrEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Template\ListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +146,18 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form\Defining\AddOrEditUnit.resx">
+      <DependentUpon>AddOrEditUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form\Defining\AddOrEditUnitGroup.resx">
+      <DependentUpon>AddOrEditUnitGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form\Defining\Unit.resx">
+      <DependentUpon>Unit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form\Defining\UnitGroup.resx">
+      <DependentUpon>UnitGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Form\Defining\Material.resx">
       <DependentUpon>Material.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Form\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Template\AddOrEditForm.resx">
+      <DependentUpon>AddOrEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Template\ListForm.resx">
       <DependentUpon>ListForm.cs</DependentUpon>

@@ -198,6 +198,7 @@
             this.btnUnit.Name = "btnUnit";
             this.btnUnit.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnUnit.Text = "واحد";
+            this.btnUnit.Click += new System.EventHandler(this.btnUnit_Click);
             // 
             // btnUnitGroup
             // 
@@ -205,6 +206,7 @@
             this.btnUnitGroup.Name = "btnUnitGroup";
             this.btnUnitGroup.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnUnitGroup.Text = "گروه های واحدی";
+            this.btnUnitGroup.Click += new System.EventHandler(this.btnUnitGroup_Click);
             // 
             // radRibbonBarGroup2
             // 
