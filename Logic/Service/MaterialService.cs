@@ -9,7 +9,22 @@ namespace Logic.Service
 {
     public static class MaterialService
     {
+        public static ServiceResult<IQueryable<Material>> GetMaterials()
+        {
+            var result = new ServiceResult<IQueryable<Material>>();
+            try
+            {
+                
+                var db = new EKAEntities();
+                result.Result = db.Materials;
+            }
+            catch
+            {
+                result.Status = ResultStatus.Unknown;
+            }
 
+            return result;
+        }
         public static ServiceResult<Material> CreateMaterial(MaterialGroup materialGroup, decimal qty)
         {
             var result = new ServiceResult<Material>();

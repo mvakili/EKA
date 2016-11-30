@@ -34,6 +34,7 @@
             this.commandBarSeparator1 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.btnExit = new Telerik.WinControls.UI.RadButtonElement();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
             this.radRibbonBar1 = new Telerik.WinControls.UI.RadRibbonBar();
             this.ribbonTab1 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup1 = new Telerik.WinControls.UI.RadRibbonBarGroup();
@@ -53,11 +54,10 @@
             this.radRibbonBarGroup5 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.btnUser = new Telerik.WinControls.UI.RadButtonElement();
             this.btnWareHouseManager = new Telerik.WinControls.UI.RadButtonElement();
-            this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radRibbonBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radRibbonBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@
             this.commandBarSeparator1,
             this.btnExit});
             this.radStatusStrip1.Location = new System.Drawing.Point(0, 519);
-            this.radStatusStrip1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radStatusStrip1.Margin = new System.Windows.Forms.Padding(4);
             this.radStatusStrip1.Name = "radStatusStrip1";
             this.radStatusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.radStatusStrip1.Size = new System.Drawing.Size(695, 28);
@@ -102,10 +102,21 @@
             this.panel1.Controls.Add(this.radPageView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 165);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(695, 354);
             this.panel1.TabIndex = 2;
+            // 
+            // radPageView1
+            // 
+            this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radPageView1.Location = new System.Drawing.Point(0, 0);
+            this.radPageView1.Name = "radPageView1";
+            this.radPageView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.radPageView1.Size = new System.Drawing.Size(695, 354);
+            this.radPageView1.TabIndex = 0;
+            this.radPageView1.Text = "radPageView1";
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).ShowItemCloseButton = true;
             // 
             // radRibbonBar1
             // 
@@ -172,6 +183,7 @@
             this.btnMaterial.Name = "btnMaterial";
             this.btnMaterial.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnMaterial.Text = "کالا";
+            this.btnMaterial.Click += new System.EventHandler(this.btnMaterial_Click);
             // 
             // btnMaterialGroup
             // 
@@ -251,6 +263,7 @@
             // 
             // ribbonTab3
             // 
+            this.ribbonTab3.IsSelected = false;
             this.ribbonTab3.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup5});
             this.ribbonTab3.Name = "ribbonTab3";
@@ -276,15 +289,6 @@
             this.btnWareHouseManager.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnWareHouseManager.Text = "دسترسی به انبار";
             // 
-            // radPageView1
-            // 
-            this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPageView1.Location = new System.Drawing.Point(0, 0);
-            this.radPageView1.Name = "radPageView1";
-            this.radPageView1.Size = new System.Drawing.Size(695, 354);
-            this.radPageView1.TabIndex = 0;
-            this.radPageView1.Text = "radPageView1";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -294,7 +298,7 @@
             this.Controls.Add(this.radRibbonBar1);
             this.Controls.Add(this.radStatusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main";
             // 
             // 
@@ -304,8 +308,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radRibbonBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radRibbonBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
