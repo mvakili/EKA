@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>signs.ico</ApplicationIcon>
+    <ApplicationIcon>photo_2016-11-29_19-02-57.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -173,6 +173,7 @@
     <None Include="Resources\circle-with-check-symbol.png" />
     <None Include="Resources\circle-with-check-symbol1.png" />
     <None Include="Resources\cancel.png" />
+    <Content Include="photo_2016-11-29_19-02-57.ico" />
     <Content Include="signs.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
