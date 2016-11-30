@@ -63,6 +63,36 @@ namespace EKAWindowApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cancel {
+            get {
+                object obj = ResourceManager.GetObject("cancel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap circle_with_check_symbol {
+            get {
+                object obj = ResourceManager.GetObject("circle-with-check-symbol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap circle_with_check_symbol1 {
+            get {
+                object obj = ResourceManager.GetObject("circle-with-check-symbol1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap collaboration {
             get {
                 object obj = ResourceManager.GetObject("collaboration", resourceCulture);
@@ -73,9 +103,49 @@ namespace EKAWindowApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete {
+            get {
+                object obj = ResourceManager.GetObject("delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit {
+            get {
+                object obj = ResourceManager.GetObject("edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap id_card {
             get {
                 object obj = ResourceManager.GetObject("id-card", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search {
+            get {
+                object obj = ResourceManager.GetObject("search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap signs {
+            get {
+                object obj = ResourceManager.GetObject("signs", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

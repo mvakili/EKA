@@ -41,5 +41,10 @@ namespace EKAWindowApplication.UI.Template
             InitializeComponent();
             SelectMode = false;
         }
+
+        private void ListForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

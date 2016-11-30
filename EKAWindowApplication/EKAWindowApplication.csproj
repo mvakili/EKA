@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>signs.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -163,6 +166,14 @@
     <Content Include="lib\Telerik.WinControls.UI.XML" />
     <Content Include="lib\Telerik.WinControls.XML" />
     <Content Include="lib\TelerikCommon.dll" />
+    <None Include="Resources\signs.ico" />
+    <None Include="Resources\edit.ico" />
+    <None Include="Resources\delete.ico" />
+    <None Include="Resources\search.ico" />
+    <None Include="Resources\circle-with-check-symbol.png" />
+    <None Include="Resources\circle-with-check-symbol1.png" />
+    <None Include="Resources\cancel.png" />
+    <Content Include="signs.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
