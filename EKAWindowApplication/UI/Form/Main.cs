@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using EKAWindowApplication.UI.Form.Defining;
 using Logic.Service;
 using Telerik.WinControls.UI;
 
@@ -28,13 +29,13 @@ namespace EKAWindowApplication.UI.Form
 
         }
 
-        private void ShowForm(object sender, System.Windows.Forms.Form frm)
+        private void ShowForm(object sender, RadForm frm)
         {
             try
             {
                 foreach (var t in radPageView1.Pages)
                 {
-                    if (t.Tag.ToString().CompareTo(frm.Name) != 0) continue;
+                    if (t.Tag.ToString().CompareTo(frm.Text) != 0) continue;
                     t.Select();
                     radPageView1.SelectedPage = t;
                     return;
@@ -46,7 +47,7 @@ namespace EKAWindowApplication.UI.Form
                 frm.FormBorderStyle = FormBorderStyle.None;
                 frm.Dock = DockStyle.Fill;
                 page.Controls.Add(frm);
-                page.Tag = frm.Name;
+                page.Tag = frm.Text;
                 page.Text = frm.Text;
                 frm.Show();
                 radPageView1.SelectedPage = page;
@@ -64,7 +65,7 @@ namespace EKAWindowApplication.UI.Form
 
         private void btnMaterial_Click(object sender, EventArgs e)
         {
-            ShowForm(this, new Main());
+            ShowForm(this, new Material());
         }
     }
 }

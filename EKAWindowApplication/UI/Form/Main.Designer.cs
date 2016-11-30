@@ -67,10 +67,11 @@
             this.lblUserDetails,
             this.commandBarSeparator1,
             this.btnExit});
-            this.radStatusStrip1.Location = new System.Drawing.Point(0, 423);
+            this.radStatusStrip1.Location = new System.Drawing.Point(0, 519);
+            this.radStatusStrip1.Margin = new System.Windows.Forms.Padding(4);
             this.radStatusStrip1.Name = "radStatusStrip1";
             this.radStatusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radStatusStrip1.Size = new System.Drawing.Size(529, 24);
+            this.radStatusStrip1.Size = new System.Drawing.Size(695, 28);
             this.radStatusStrip1.SizingGrip = false;
             this.radStatusStrip1.TabIndex = 1;
             this.radStatusStrip1.Text = "radStatusStrip1";
@@ -78,6 +79,7 @@
             // lblUserDetails
             // 
             this.lblUserDetails.Name = "lblUserDetails";
+            this.radStatusStrip1.SetSpring(this.lblUserDetails, false);
             this.lblUserDetails.Text = "";
             this.lblUserDetails.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.lblUserDetails.TextWrap = true;
@@ -85,11 +87,13 @@
             // commandBarSeparator1
             // 
             this.commandBarSeparator1.Name = "commandBarSeparator1";
+            this.radStatusStrip1.SetSpring(this.commandBarSeparator1, false);
             this.commandBarSeparator1.VisibleInOverflowMenu = false;
             // 
             // btnExit
             // 
             this.btnExit.Name = "btnExit";
+            this.radStatusStrip1.SetSpring(this.btnExit, false);
             this.btnExit.Text = "خروج";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -97,20 +101,22 @@
             // 
             this.panel1.Controls.Add(this.radPageView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 134);
+            this.panel1.Location = new System.Drawing.Point(0, 165);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(529, 289);
+            this.panel1.Size = new System.Drawing.Size(695, 354);
             this.panel1.TabIndex = 2;
             // 
             // radPageView1
             // 
             this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
-            this.radPageView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.Size = new System.Drawing.Size(529, 289);
+            this.radPageView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.radPageView1.Size = new System.Drawing.Size(695, 354);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.Text = "radPageView1";
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).ShowItemCloseButton = true;
             // 
             // radRibbonBar1
             // 
@@ -123,7 +129,7 @@
             // 
             this.radRibbonBar1.ExitButton.Text = "Exit";
             this.radRibbonBar1.Location = new System.Drawing.Point(0, 0);
-            this.radRibbonBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radRibbonBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radRibbonBar1.Name = "radRibbonBar1";
             // 
             // 
@@ -134,7 +140,7 @@
             // 
             this.radRibbonBar1.RootElement.StretchVertically = true;
             this.radRibbonBar1.ShowExpandButton = false;
-            this.radRibbonBar1.Size = new System.Drawing.Size(529, 134);
+            this.radRibbonBar1.Size = new System.Drawing.Size(695, 165);
             this.radRibbonBar1.StartButtonImage = ((System.Drawing.Image)(resources.GetObject("radRibbonBar1.StartButtonImage")));
             this.radRibbonBar1.TabIndex = 5;
             this.radRibbonBar1.Text = "EKA سیستم انبارداری";
@@ -152,7 +158,7 @@
             // 
             // ribbonTab1
             // 
-            this.ribbonTab1.IsSelected = false;
+            this.ribbonTab1.IsSelected = true;
             this.ribbonTab1.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup1,
             this.radRibbonBarGroup2});
@@ -177,6 +183,7 @@
             this.btnMaterial.Name = "btnMaterial";
             this.btnMaterial.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnMaterial.Text = "کالا";
+            this.btnMaterial.Click += new System.EventHandler(this.btnMaterial_Click);
             // 
             // btnMaterialGroup
             // 
@@ -214,7 +221,7 @@
             // 
             // ribbonTab2
             // 
-            this.ribbonTab2.IsSelected = true;
+            this.ribbonTab2.IsSelected = false;
             this.ribbonTab2.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup3,
             this.radRibbonBarGroup4});
@@ -256,6 +263,7 @@
             // 
             // ribbonTab3
             // 
+            this.ribbonTab3.IsSelected = false;
             this.ribbonTab3.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup5});
             this.ribbonTab3.Name = "ribbonTab3";
@@ -283,13 +291,14 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 447);
+            this.ClientSize = new System.Drawing.Size(695, 547);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.radRibbonBar1);
             this.Controls.Add(this.radStatusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main";
             // 
             // 
