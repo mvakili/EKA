@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.rgvList = new Telerik.WinControls.UI.RadGridView();
             this.txtMaterialID = new Telerik.WinControls.UI.RadTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,11 +64,11 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(517, 13);
+            this.btnCancel.Location = new System.Drawing.Point(507, 13);
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(411, 13);
+            this.btnAccept.Location = new System.Drawing.Point(401, 13);
             // 
             // ControlsContainer
             // 
@@ -76,15 +76,15 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(900, 13);
+            this.btnAdd.Location = new System.Drawing.Point(879, 13);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(814, 13);
+            this.btnEdit.Location = new System.Drawing.Point(772, 13);
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(728, 13);
+            this.btnRemove.Location = new System.Drawing.Point(665, 13);
             // 
             // pnlOperation
             // 
@@ -95,7 +95,7 @@
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSearch.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSearch.Location = new System.Drawing.Point(0, 10);
-            this.btnSearch.Size = new System.Drawing.Size(80, 117);
+            this.btnSearch.Size = new System.Drawing.Size(80, 105);
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // pnlSearch
@@ -107,7 +107,7 @@
             this.pnlSearch.PanelContainer.Controls.Add(this.label1);
             this.pnlSearch.PanelContainer.Location = new System.Drawing.Point(1, 1);
             this.pnlSearch.PanelContainer.Padding = new System.Windows.Forms.Padding(0, 10, 0, 15);
-            this.pnlSearch.PanelContainer.Size = new System.Drawing.Size(990, 142);
+            this.pnlSearch.PanelContainer.Size = new System.Drawing.Size(990, 130);
             this.pnlSearch.Size = new System.Drawing.Size(992, 159);
             // 
             // rgvList
@@ -119,28 +119,28 @@
             // 
             this.rgvList.MasterTemplate.AllowAddNewRow = false;
             this.rgvList.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn1.FieldName = "MaterialID";
-            gridViewTextBoxColumn1.HeaderText = "کد کالا";
-            gridViewTextBoxColumn1.Name = "MaterialID";
-            gridViewTextBoxColumn1.Width = 257;
-            gridViewTextBoxColumn2.FieldName = "GroupName";
-            gridViewTextBoxColumn2.HeaderText = "نوع کالا";
-            gridViewTextBoxColumn2.Name = "GroupName";
-            gridViewTextBoxColumn2.Width = 291;
-            gridViewTextBoxColumn3.FieldName = "Qty";
-            gridViewTextBoxColumn3.HeaderText = "مقدار";
-            gridViewTextBoxColumn3.Name = "Qty";
-            gridViewTextBoxColumn3.Width = 230;
-            gridViewTextBoxColumn4.FieldName = "Unit";
-            gridViewTextBoxColumn4.HeaderText = "واحد";
-            gridViewTextBoxColumn4.Name = "Unit";
-            gridViewTextBoxColumn4.Width = 196;
+            gridViewTextBoxColumn5.FieldName = "MaterialID";
+            gridViewTextBoxColumn5.HeaderText = "کد کالا";
+            gridViewTextBoxColumn5.Name = "MaterialID";
+            gridViewTextBoxColumn5.Width = 257;
+            gridViewTextBoxColumn6.FieldName = "GroupName";
+            gridViewTextBoxColumn6.HeaderText = "نوع کالا";
+            gridViewTextBoxColumn6.Name = "GroupName";
+            gridViewTextBoxColumn6.Width = 291;
+            gridViewTextBoxColumn7.FieldName = "Qty";
+            gridViewTextBoxColumn7.HeaderText = "مقدار";
+            gridViewTextBoxColumn7.Name = "Qty";
+            gridViewTextBoxColumn7.Width = 230;
+            gridViewTextBoxColumn8.FieldName = "Unit";
+            gridViewTextBoxColumn8.HeaderText = "واحد";
+            gridViewTextBoxColumn8.Name = "Unit";
+            gridViewTextBoxColumn8.Width = 196;
             this.rgvList.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4});
-            this.rgvList.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6,
+            gridViewTextBoxColumn7,
+            gridViewTextBoxColumn8});
+            this.rgvList.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.rgvList.Name = "rgvList";
             this.rgvList.ReadOnly = true;
             this.rgvList.Size = new System.Drawing.Size(992, 289);
