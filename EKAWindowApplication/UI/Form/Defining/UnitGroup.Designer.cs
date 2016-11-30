@@ -60,12 +60,10 @@
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(517, 13);
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAccept
             // 
             this.btnAccept.Location = new System.Drawing.Point(411, 13);
-            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // ControlsContainer
             // 
