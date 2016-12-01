@@ -95,7 +95,6 @@
             this.ControlsContainer.Location = new System.Drawing.Point(0, 26);
             this.ControlsContainer.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.ControlsContainer.Name = "ControlsContainer";
-            this.ControlsContainer.Padding = new System.Windows.Forms.Padding(0);
             this.ControlsContainer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ControlsContainer.Size = new System.Drawing.Size(974, 121);
             this.ControlsContainer.TabIndex = 0;

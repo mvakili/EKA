@@ -73,9 +73,8 @@ namespace EKAWindowApplication.UI.Form.Defining
                 return;
             }
 
-            int id;
-            int.TryParse(rgvList.SelectedRows[0].Cells["UnitGroupID"].Value.ToString(), out id);
-            if (new AddOrEditUnitGroup(_data.Result.FirstOrDefault(r => r.UnitGroupID == id)).ShowDialog() == DialogResult.OK)
+
+            if (new AddOrEditUnitGroup(Selected).ShowDialog() == DialogResult.OK)
             {
                 Bind();
             }

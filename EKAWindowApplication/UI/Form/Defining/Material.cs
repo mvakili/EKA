@@ -10,6 +10,16 @@ namespace EKAWindowApplication.UI.Form.Defining
     public partial class Material : ListForm, IForm
     {
         private ServiceResult<IQueryable<Logic.Data.Material>> _data;
+        public Logic.Data.Material Selected
+        {
+            get
+            {
+                int id;
+                int.TryParse(rgvList.SelectedRows[0].Cells["UnitGroupID"].Value.ToString(), out id);
+                return _data.Result.FirstOrDefault(r => r.MaterialID == id);
+
+            }
+        }
         public Material()
         {
             InitializeComponent();
