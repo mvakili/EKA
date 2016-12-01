@@ -6,47 +6,34 @@ using Logic.Service;
 
 namespace EKAWindowApplication.UI.Form.Defining
 {
-    public partial class AddOrEditUnit : AddOrEditForm, IForm
+    public partial class AddOrEditMaterial : AddOrEditForm, IForm
     {
-        private Logic.Data.Unit _unit;
-        public AddOrEditUnit()
+        private Logic.Data.Material _material;
+        public AddOrEditMaterial()
         {
             InitializeComponent();
             EditMode = false;
             Bind();
         }
 
-        public AddOrEditUnit(Logic.Data.Unit unit)
+        public AddOrEditMaterial(Logic.Data.Material material)
         {
             InitializeComponent();
             EditMode = true;
-            _unit = unit;
+            _material = material;
             Bind();
         }
 
-        public Logic.Data.Unit UnitGroup
+        public Logic.Data.Material Material
         {
             get
             {
-                return _unit;
+                return _material;
             }
 
             set
             {
-                _unit = value;
-            }
-        }
-
-        public Logic.Data.Unit UnitGroup1
-        {
-            get
-            {
-                return _unit;
-            }
-
-            set
-            {
-                _unit = value;
+                _material = value;
             }
         }
 
@@ -54,16 +41,15 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
             if (EditMode)
             {
-                txtName.Text = _unit.Name;
-                breUnitGroup.Tag = _unit.UnitGroup;
-                breUnitGroup.Value = _unit.UnitGroup.Name;
-                txtFactor.Text = _unit.Factor.ToString();
+                txtQty.Text = _material.Qty.ToString();
+                breMaterialGroup.Tag = _material.MaterialGroup;
+                breMaterialGroup.Value = _material.MaterialGroup.Name;
+                lblUnitName.Text = Material.MaterialGroup.Unit.Name;
             }
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
         }
 
         private void btnCancel_Click(object sender, EventArgs e) 
@@ -73,11 +59,12 @@ namespace EKAWindowApplication.UI.Form.Defining
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+            decimal qty;
+            decimal.TryParse(txtQty.Text, out qty);
             if (EditMode)
             {
-                double factor = 1;
-                double.TryParse(txtFactor.Text, out factor);
-                var result = MaterialService.EditUnit(_unit, txtName.Text, (Logic.Data.UnitGroup)breUnitGroup.Tag, factor);
+                
+                var result = MaterialService.EditMaterial(_material, (Logic.Data.MaterialGroup)breMaterialGroup.Tag, qty);
                 switch (result.Status)
                 {
                     case ResultStatus.Ok:
@@ -91,9 +78,7 @@ namespace EKAWindowApplication.UI.Form.Defining
             }
             if (!EditMode)
             {
-                double factor = 1;
-                double.TryParse(txtFactor.Text, out factor);
-                var result = MaterialService.CreateUnit(txtName.Text, (Logic.Data.UnitGroup)breUnitGroup.Tag, factor);
+                var result = MaterialService.CreateMaterial((Logic.Data.MaterialGroup)breMaterialGroup.Tag, qty);
                 switch (result.Status)
                 {
                     case ResultStatus.Ok:
@@ -107,13 +92,15 @@ namespace EKAWindowApplication.UI.Form.Defining
             }
         }
 
-        private void breUnitGroup_Click(object sender, EventArgs e)
+        private void breMaterialGroup_Click(object sender, EventArgs e)
         {
-            var form = new UnitGroup {SelectMode = true};
+            var form = new MaterialGroup() {SelectMode = true};
             if (form.ShowDialog() == DialogResult.OK)
             {
-                breUnitGroup.Tag = form.Selected;
-                breUnitGroup.Value = form.Selected.Name;
+                breMaterialGroup.Tag = form.Selected;
+                breMaterialGroup.Value = form.Selected.Name;
+                lblUnitName.Text = form.Selected.Unit.Name;
+                txtQty.Text = @"0";
             }
         }
     }

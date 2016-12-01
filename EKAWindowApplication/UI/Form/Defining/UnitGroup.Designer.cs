@@ -55,15 +55,14 @@
             // pnlSelect
             // 
             this.pnlSelect.Location = new System.Drawing.Point(0, 503);
-            this.pnlSelect.Size = new System.Drawing.Size(992, 55);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(507, 13);
+            this.btnCancel.Location = new System.Drawing.Point(498, 13);
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(401, 13);
+            this.btnAccept.Location = new System.Drawing.Point(392, 13);
             // 
             // ControlsContainer
             // 
@@ -71,30 +70,22 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(879, 13);
+            this.btnAdd.Location = new System.Drawing.Point(861, 13);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(772, 13);
+            this.btnEdit.Location = new System.Drawing.Point(754, 13);
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(665, 13);
+            this.btnRemove.Location = new System.Drawing.Point(647, 13);
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // pnlOperation
-            // 
-            this.pnlOperation.Size = new System.Drawing.Size(992, 55);
             // 
             // btnSearch
             // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnSearch.Location = new System.Drawing.Point(10, 10);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.btnSearch.Size = new System.Drawing.Size(80, 105);
+            this.btnSearch.Size = new System.Drawing.Size(101, 105);
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // pnlSearch
@@ -103,7 +94,6 @@
             // pnlSearch.PanelContainer
             // 
             this.pnlSearch.PanelContainer.Location = new System.Drawing.Point(1, 1);
-            this.pnlSearch.PanelContainer.Padding = new System.Windows.Forms.Padding(10, 10, 0, 15);
             this.pnlSearch.PanelContainer.Size = new System.Drawing.Size(990, 130);
             this.pnlSearch.Size = new System.Drawing.Size(992, 159);
             this.pnlSearch.Visible = false;

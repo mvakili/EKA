@@ -70,7 +70,7 @@ namespace EKAWindowApplication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to خطایی در دریافت اظلاعات رخ داد.
+        ///   Looks up a localized string similar to خطایی در دریافت اطلاعات رخ داد.
         /// </summary>
         internal static string BindingError {
             get {

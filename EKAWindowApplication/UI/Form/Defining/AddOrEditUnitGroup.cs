@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using EKAWindowApplication.Properties;
 using EKAWindowApplication.UI.Template;
-using Logic.Data;
 using Logic.Service;
-using Telerik.WinControls;
 
 namespace EKAWindowApplication.UI.Form.Defining
 {
@@ -44,19 +37,6 @@ namespace EKAWindowApplication.UI.Form.Defining
             }
         }
 
-        public Logic.Data.UnitGroup UnitGroup1
-        {
-            get
-            {
-                return _unitGroup;
-            }
-
-            set
-            {
-                _unitGroup = value;
-            }
-        }
-
         public void Bind()
         {
             if (EditMode)
@@ -67,7 +47,6 @@ namespace EKAWindowApplication.UI.Form.Defining
 
         public void Clear()
         {
-            throw new NotImplementedException();
         }
 
         private void btnCancel_Click(object sender, EventArgs e) 

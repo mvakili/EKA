@@ -191,6 +191,7 @@
             this.btnMaterialGroup.Name = "btnMaterialGroup";
             this.btnMaterialGroup.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnMaterialGroup.Text = "گروه کالایی";
+            this.btnMaterialGroup.Click += new System.EventHandler(this.btnMaterialGroup_Click);
             // 
             // btnUnit
             // 

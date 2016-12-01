@@ -1,6 +1,6 @@
 ﻿namespace EKAWindowApplication.UI.Template
 {
-    partial class ListForm
+     partial class ListForm
     {
         /// <summary> 
         /// Required designer variable.
@@ -151,10 +151,10 @@
             // 
             this.btnSearch.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSearch.Image = global::EKAWindowApplication.Properties.Resources.search;
-            this.btnSearch.Location = new System.Drawing.Point(0, 0);
+            this.btnSearch.Location = new System.Drawing.Point(10, 10);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(101, 142);
+            this.btnSearch.Size = new System.Drawing.Size(101, 117);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "جستجو";
             // 
@@ -171,6 +171,7 @@
             // 
             this.pnlSearch.PanelContainer.Controls.Add(this.btnSearch);
             this.pnlSearch.PanelContainer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlSearch.PanelContainer.Padding = new System.Windows.Forms.Padding(10, 10, 0, 15);
             this.pnlSearch.PanelContainer.Size = new System.Drawing.Size(990, 142);
             this.pnlSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.pnlSearch.Size = new System.Drawing.Size(992, 171);

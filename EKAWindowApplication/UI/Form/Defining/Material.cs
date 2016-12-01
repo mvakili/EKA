@@ -7,7 +7,7 @@ using Logic.Service;
 
 namespace EKAWindowApplication.UI.Form.Defining
 {
-    public partial class Material : ListForm, IForm
+    public partial class Material : ListForm, IListForm<Logic.Data.Material>
     {
         private ServiceResult<IQueryable<Logic.Data.Material>> _data;
         public Logic.Data.Material Selected
@@ -15,7 +15,7 @@ namespace EKAWindowApplication.UI.Form.Defining
             get
             {
                 int id;
-                int.TryParse(rgvList.SelectedRows[0].Cells["UnitGroupID"].Value.ToString(), out id);
+                int.TryParse(rgvList.SelectedRows[0].Cells["MaterialID"].Value.ToString(), out id);
                 return _data.Result.FirstOrDefault(r => r.MaterialID == id);
 
             }
@@ -47,7 +47,8 @@ namespace EKAWindowApplication.UI.Form.Defining
                     r.MaterialID,
                     GroupName = r.MaterialGroup.Name,
                     r.Qty,
-                    Unit = r.MaterialGroup.Unit.Name
+                    Unit = r.MaterialGroup.Unit.Name,
+                    WareHouseName = r.Orders.OrderByDescending(u => u.DateTime).Select(u => u.WareHouse.Name).FirstOrDefault() ?? ""
 
                 }).ToList();
         }
@@ -57,7 +58,52 @@ namespace EKAWindowApplication.UI.Form.Defining
             
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        public void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (new AddOrEditMaterial().ShowDialog() == DialogResult.OK)
+            {
+                Bind();
+            }
+        }
+
+        public void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (Selected == null)
+            {
+                MessageBox.Show(Resources.NoRowSelected);
+                return;
+            }
+            if (new AddOrEditMaterial(Selected).ShowDialog() == DialogResult.OK)
+            {
+                Bind();
+            }
+        }
+
+        public void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (Selected == null)
+            {
+                MessageBox.Show(Resources.NoRowSelected);
+                return;
+            }
+            var result = MaterialService.RemoveMaterial(Selected);
+
+            switch (result.Status)
+            {
+                case ResultStatus.Ok:
+                    MessageBox.Show(Resources.SuccessfulOperation);
+                    Bind();
+                    break;
+                case ResultStatus.AccessFail:
+                    MessageBox.Show(Resources.AccessFail);
+                    break;
+                default:
+                    MessageBox.Show(Resources.UnknownError);
+                    break;
+            }
+        }
+
+        public void btnSearch_Click(object sender, EventArgs e)
         {
             Bind();
         }

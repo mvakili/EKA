@@ -7,7 +7,7 @@ using Logic.Service;
 
 namespace EKAWindowApplication.UI.Form.Defining
 {
-    public partial class UnitGroup : ListForm, IForm
+    public partial class UnitGroup : ListForm, IListForm<Logic.Data.UnitGroup>
     {
         private ServiceResult<IQueryable<Logic.Data.UnitGroup>> _data;
 
@@ -52,12 +52,12 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        public void btnSearch_Click(object sender, EventArgs e)
         {
             Bind();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        public void btnAdd_Click(object sender, EventArgs e)
         {
             if (new AddOrEditUnitGroup().ShowDialog() == DialogResult.OK)
             {
@@ -65,7 +65,7 @@ namespace EKAWindowApplication.UI.Form.Defining
             }
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        public void btnEdit_Click(object sender, EventArgs e)
         {
             if (Selected == null)
             {
@@ -80,9 +80,9 @@ namespace EKAWindowApplication.UI.Form.Defining
             }
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
+        public void btnRemove_Click(object sender, EventArgs e)
         {
-            if (rgvList.SelectedRows.Count == 0)
+            if (Selected == null)
             {
                 MessageBox.Show(Resources.NoRowSelected);
                 return;

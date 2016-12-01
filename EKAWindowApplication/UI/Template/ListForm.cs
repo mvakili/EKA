@@ -53,5 +53,6 @@ namespace EKAWindowApplication.UI.Template
             DialogResult = DialogResult.OK;
             Close();
         }
+
     }
 }

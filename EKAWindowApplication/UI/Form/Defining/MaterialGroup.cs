@@ -7,20 +7,20 @@ using Logic.Service;
 
 namespace EKAWindowApplication.UI.Form.Defining
 {
-    public partial class Unit : ListForm, IListForm<Logic.Data.Unit>
+    public partial class MaterialGroup : ListForm, IListForm<Logic.Data.MaterialGroup>
     {
-        private ServiceResult<IQueryable<Logic.Data.Unit>> _data;
+        private ServiceResult<IQueryable<Logic.Data.MaterialGroup>> _data;
 
-        public Logic.Data.Unit Selected
+        public Logic.Data.MaterialGroup Selected
         {
             get
             {
                 int id;
-                int.TryParse(rgvList.SelectedRows[0].Cells["UnitID"].Value.ToString(), out id);
-                return  _data.Result.FirstOrDefault(r => r.UnitID == id);
+                int.TryParse(rgvList.SelectedRows[0].Cells["MaterialGroupID"].Value.ToString(), out id);
+                return  _data.Result.FirstOrDefault(r => r.MaterialGroupID == id);
             }
         }
-        public Unit()
+        public MaterialGroup()
         {
             InitializeComponent();
             Bind();
@@ -28,24 +28,25 @@ namespace EKAWindowApplication.UI.Form.Defining
 
         public void Bind()
         {
-            _data = MaterialService.GetUnits();
+            _data = MaterialService.GetMaterialGroups();
             if (_data.Status != ResultStatus.Ok)
             {
                 MessageBox.Show(Resources.BindingError);
                 return;
             }
 
+            int materialGroupId;
+            int.TryParse(txtMaterialGroupID.Text, out materialGroupId);
             rgvList.DataSource = _data.Result
                 .Where(r =>  
-                    true
+                    materialGroupId == 0 || r.MaterialGroupID == materialGroupId
                 )
                 .Select(r => new
                 {
-                    r.UnitID,
-                    r.Name,
-                    r.Factor,
-                    UnitGroupName = r.UnitGroup.Name
-
+                   r.MaterialGroupID,
+                   r.Name,
+                   UnitName = r.Unit.Name,
+                   AvailableAmount = r.MaterialExistances.Any() ? r.MaterialExistances.Sum(u => u.Qty) : 0
                 }).ToList();
         }
 
@@ -60,7 +61,7 @@ namespace EKAWindowApplication.UI.Form.Defining
 
         public void btnAdd_Click(object sender, EventArgs e)
         {
-            if (new AddOrEditUnit().ShowDialog() == DialogResult.OK)
+            if (new AddOrEditMaterialGroup().ShowDialog() == DialogResult.OK)
             {
                 Bind();
             }
@@ -73,7 +74,7 @@ namespace EKAWindowApplication.UI.Form.Defining
                 MessageBox.Show(Resources.NoRowSelected);
                 return;
             }
-            if (new AddOrEditUnit(Selected).ShowDialog() == DialogResult.OK)
+            if (new AddOrEditMaterialGroup(Selected).ShowDialog() == DialogResult.OK)
             {
                 Bind();
             }
@@ -86,7 +87,7 @@ namespace EKAWindowApplication.UI.Form.Defining
                 MessageBox.Show(Resources.NoRowSelected);
                 return;
             }
-            var result = MaterialService.RemoveUnit(Selected);
+            var result = MaterialService.RemoveMaterialGroup(Selected);
 
             switch (result.Status)
             {
