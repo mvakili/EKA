@@ -14,9 +14,16 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
             get
             {
-                int id;
-                int.TryParse(rgvList.SelectedRows[0].Cells["MaterialID"].Value.ToString(), out id);
-                return _data.Result.FirstOrDefault(r => r.MaterialID == id);
+                try
+                {
+                    int id;
+                    int.TryParse(rgvList.SelectedRows[0].Cells["MaterialID"].Value.ToString(), out id);
+                    return _data.Result.FirstOrDefault(r => r.MaterialID == id);
+                }
+                catch
+                {
+                    return null;
+                }
 
             }
         }
@@ -51,6 +58,7 @@ namespace EKAWindowApplication.UI.Form.Defining
                     WareHouseName = r.Orders.OrderByDescending(u => u.DateTime).Select(u => u.WareHouse.Name).FirstOrDefault() ?? ""
 
                 }).ToList();
+            rgvList.BestFitColumns();
         }
 
         public void Clear()

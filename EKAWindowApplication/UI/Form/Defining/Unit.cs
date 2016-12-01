@@ -15,9 +15,16 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
             get
             {
-                int id;
-                int.TryParse(rgvList.SelectedRows[0].Cells["UnitID"].Value.ToString(), out id);
-                return  _data.Result.FirstOrDefault(r => r.UnitID == id);
+                try
+                {
+                    int id;
+                    int.TryParse(rgvList.SelectedRows[0].Cells["UnitID"].Value.ToString(), out id);
+                    return _data.Result.FirstOrDefault(r => r.UnitID == id);
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
         public Unit()
@@ -47,6 +54,7 @@ namespace EKAWindowApplication.UI.Form.Defining
                     UnitGroupName = r.UnitGroup.Name
 
                 }).ToList();
+            rgvList.BestFitColumns();
         }
 
         public void Clear()

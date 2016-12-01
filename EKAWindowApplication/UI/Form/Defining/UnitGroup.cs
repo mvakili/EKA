@@ -15,9 +15,16 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
             get
             {
-                int id;
-                int.TryParse(rgvList.SelectedRows[0].Cells["UnitGroupID"].Value.ToString(), out id);
-                return _data.Result.FirstOrDefault(r => r.UnitGroupID == id);
+                try
+                {
+                    int id;
+                    int.TryParse(rgvList.SelectedRows[0].Cells["UnitGroupID"].Value.ToString(), out id);
+                    return _data.Result.FirstOrDefault(r => r.UnitGroupID == id);
+                }
+                catch
+                {
+                    return null;
+                }
                 
             }
         }
@@ -46,6 +53,7 @@ namespace EKAWindowApplication.UI.Form.Defining
                     r.Name
 
                 }).ToList();
+            rgvList.BestFitColumns();
         }
 
         public void Clear()

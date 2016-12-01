@@ -15,9 +15,17 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
             get
             {
-                int id;
-                int.TryParse(rgvList.SelectedRows[0].Cells["MaterialGroupID"].Value.ToString(), out id);
-                return  _data.Result.FirstOrDefault(r => r.MaterialGroupID == id);
+                try
+                {
+                    int id;
+                    int.TryParse(rgvList.SelectedRows[0].Cells["MaterialGroupID"].Value.ToString(), out id);
+                    return _data.Result.FirstOrDefault(r => r.MaterialGroupID == id);
+                }
+                catch
+                {
+                    return null;
+                }
+
             }
         }
         public MaterialGroup()
@@ -48,6 +56,7 @@ namespace EKAWindowApplication.UI.Form.Defining
                    UnitName = r.Unit.Name,
                    AvailableAmount = r.MaterialExistances.Any() ? r.MaterialExistances.Sum(u => u.Qty) : 0
                 }).ToList();
+            rgvList.BestFitColumns();
         }
 
         public void Clear()

@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using Logic.Service;
-using Telerik.WinControls;
 
 namespace EKAWindowApplication.UI.Form
 {
@@ -19,9 +13,9 @@ namespace EKAWindowApplication.UI.Form
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (Logic.Service.UserService.IsLoggedIn) Logic.Service.UserService.Logout();
+            if (UserService.IsLoggedIn) UserService.Logout();
 
-            var result = Logic.Service.UserService.Login(txtUserName.Text, txtPassword.Text);
+            var result = UserService.Login(txtUserName.Text, txtPassword.Text);
             
 
             switch (result.Status)
@@ -29,7 +23,7 @@ namespace EKAWindowApplication.UI.Form
                 case ResultStatus.Ok:
                     lblResult.ForeColor = Color.DarkGreen;
                     lblResult.Text =
-                        $@" خوش آمدید {Logic.Service.UserService.Me.FirstName} {Logic.Service.UserService.Me.LastName}";
+                        $@" خوش آمدید {UserService.Me.FirstName} {UserService.Me.LastName}";
                     Hide();
                     Clear();
                     new Main().ShowDialog();

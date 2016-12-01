@@ -64,11 +64,11 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(453, 13);
+            this.btnCancel.Location = new System.Drawing.Point(435, 13);
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(347, 13);
+            this.btnAccept.Location = new System.Drawing.Point(329, 13);
             // 
             // ControlsContainer
             // 

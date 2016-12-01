@@ -82,5 +82,10 @@ namespace EKAWindowApplication.UI.Form
         {
             ShowForm(this, new MaterialGroup());
         }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            ShowForm(this, new User.User());
+        }
     }
 }

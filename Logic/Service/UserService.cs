@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
 using Logic.Data;
 
@@ -9,103 +10,151 @@ namespace Logic.Service
         public static User Me;
         public static bool IsLoggedIn => Me != null;
 
-        public static ServiceResult<User> CreateUser(string userName, string password, string firstName, string lastName, bool isActive = true)
+        public static ServiceResult<User> CreateUser(string userName, string firstName, string lastName, string password, bool isActive = true, bool isAdmin = false)
         {
             var result = new ServiceResult<User>();
-            var db = new EKAEntities();
-            var spResult = db.CreateUser(Me.UserID, userName, password, firstName, lastName, isActive).Single().Value;
-            if (spResult > 0)
-                result.Result = db.Users.Find(result);
+            if (!Me.IsAdmin)
+            {
+                result.Status = ResultStatus.AccessFail;
+            }
+            else
+            {
+                try
+                {
+                    var db = new EKAEntities();
+                    var user = new User()
+                    {
+                        UserName = userName,
+                        PasswordHash = CreateMd5(password),
+                        FirstName = firstName,
+                        LastName = lastName,
+                        IsActive = isActive,
+                        IsAdmin = isAdmin,
+                        InsertDate = db.Users.Select(u => DateTime.Now).First()
+                    };
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    result.Result = user;
+                }
+                catch(Exception ex)
+                {
+                    // ignored
+                }
+            }
+
+
+
             return result;
         }
 
-        public static ServiceResult ActivateUser(User user)
+        public static ServiceResult<IQueryable<User>> GetUsers()
         {
-            var result = new ServiceResult();
-            var db = new EKAEntities();
-            var spResult = db.ActivateUser(Me.UserID, user.UserID).Single().Value;
-            switch (spResult)
+            var result = new ServiceResult<IQueryable<User>>();
+            try
             {
-                case -1: result.Status = ResultStatus.AccessFail; break;
-                case 0: result.Status = ResultStatus.Ok; break;
-                default:
-                    result.Status = ResultStatus.Unknown; break;
+
+                var db = new EKAEntities();
+                result.Result = db.Users;
+            }
+            catch
+            {
+                result.Status = ResultStatus.Unknown;
+            }
+
+            return result;
+        }
+
+        public static ServiceResult<bool> IsFreeUserName(string userName)
+        {
+            var result = new ServiceResult<bool>();
+            var db = new EKAEntities();
+
+            try
+            {
+                if (userName.Length < 3)
+                {
+                    result.Result = false;
+                }
+                else if (!db.Users.Any(u => u.UserName == userName))
+                {
+                    result.Result = true;
+                }
+            }
+            catch
+            {
+                result.Result = false;
             }
             return result;
         }
 
-        public static ServiceResult DeactivateUser(User user)
+        public static ServiceResult EditUser(User user, string firstName, string lastName, string password, bool isActive, bool isAdmin)
         {
             var result = new ServiceResult();
-            var db = new EKAEntities();
-            var spResult = db.DeactivateUser(Me.UserID, user.UserID).Single().Value;
-            switch (spResult)
+
+            if (!Me.IsAdmin && user.UserID != Me.UserID)
             {
-                case -1: result.Status = ResultStatus.AccessFail; break;
-                case 0: result.Status = ResultStatus.Ok; break;
-                default:
-                    result.Status = ResultStatus.Unknown; break;
+                result.Status = ResultStatus.AccessFail;
+            }
+            else
+            {
+                try
+                {
+                    var db = new EKAEntities();
+                    var toEdit = db.Users.Find(user.UserID);
+                    toEdit.FirstName = firstName;
+                    toEdit.LastName = lastName;
+                    if (Me.IsAdmin)
+                    {
+                        toEdit.IsActive = isActive;
+                        toEdit.IsAdmin = isAdmin;
+                    }
+                    if (password.Trim() != "") toEdit.PasswordHash = CreateMd5(password);
+                    db.SaveChanges();
+                    result.Status = ResultStatus.Ok;
+                }
+                catch
+                {
+                    result.Status = ResultStatus.Unknown;
+                }
             }
             return result;
         }
 
-        public static ServiceResult ChangePasswordOfUser(User user, string oldPassword, string newPassword)
+        public static ServiceResult RemoveUser(User user)
         {
             var result = new ServiceResult();
-            var db = new EKAEntities();
-            var spResult = db.ChangePasswordOfUser(Me.UserID, user.UserID, oldPassword, newPassword).Single().Value;
-            switch (spResult)
+            if (!Me.IsAdmin)
             {
-                case -1: result.Status = ResultStatus.AccessFail; break;
-                case 0: result.Status = ResultStatus.Ok; break;
-                default:
-                    result.Status = ResultStatus.Unknown; break;
+                result.Status = ResultStatus.AccessFail;
             }
-            return result;
-        }
+            else
+            if (user.Orders.Any())
+            {
+                result.Status = ResultStatus.AccessFail;
+            }
+            else if (user.WareHouses.Any())
+            {
+                result.Status = ResultStatus.AccessFail;
+            }
+            else if (user.UserID == Me.UserID)
+            {
+                result.Status = ResultStatus.AccessFail;
+            }
+            else
+            {
+                try
+                {
+                    var db = new EKAEntities();
+                    db.Users.Remove(db.Users.Find(user.UserID));
+                    db.SaveChanges();
+                    result.Status = ResultStatus.Ok;
+                }
+                catch
+                {
+                    result.Status = ResultStatus.Unknown;
+                }
+            }
 
-        public static ServiceResult ChangeDetailsOfUser(User user, string firstName, string lastName)
-        {
-            var result = new ServiceResult();
-            var db = new EKAEntities();
-            var spResult = db.ChangeDetailsOfUser(Me.UserID, user.UserID, firstName, lastName).Single().Value;
-            switch (spResult)
-            {
-                case -1: result.Status = ResultStatus.AccessFail; break;
-                case 0: result.Status = ResultStatus.Ok; break;
-                default:
-                    result.Status = ResultStatus.Unknown; break;
-            }
-            return result;
-        }
-
-        public static ServiceResult AddToAdminsUsers(User user)
-        {
-            var result = new ServiceResult();
-            var db = new EKAEntities();
-            var spResult = db.AddToAdminUsers(Me.UserID, user.UserID).Single().Value;
-            switch (spResult)
-            {
-                case -1: result.Status = ResultStatus.AccessFail; break;
-                case 0: result.Status = ResultStatus.Ok; break;
-                default:
-                    result.Status = ResultStatus.Unknown; break;
-            }
-            return result;
-        }
-
-        public static ServiceResult RemoveFromAdminUsers(User user)
-        {
-            var result = new ServiceResult();
-            var db = new EKAEntities();
-            var spResult = db.RemoveFromAdminUsers(Me.UserID, user.UserID).Single().Value;
-            switch (spResult)
-            {
-                case -1: result.Status = ResultStatus.AccessFail; break;
-                case 0: result.Status = ResultStatus.Ok; break;
-                default:
-                    result.Status = ResultStatus.Unknown; break;
-            }
             return result;
         }
 
@@ -118,7 +167,7 @@ namespace Logic.Service
                 return result;
             }
             var db = new EKAEntities();
-            var passwordHash = CreateMD5(password);
+            var passwordHash = CreateMd5(password);
             var user = db.Users.FirstOrDefault(u => u.UserName == userName && u.PasswordHash == passwordHash);
             if (user == null)
             {
@@ -148,19 +197,19 @@ namespace Logic.Service
             return result;
         }
 
-        private static string CreateMD5(string input)
+        private static string CreateMd5(string input)
         {
             // Use input string to calculate MD5 hash
             using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
             {
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
+                var inputBytes = Encoding.ASCII.GetBytes(input);
+                var hashBytes = md5.ComputeHash(inputBytes);
 
                 // Convert the byte array to hexadecimal string
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
+                foreach (var t in hashBytes)
                 {
-                    sb.Append(hashBytes[i].ToString("X2"));
+                    sb.Append(t.ToString("X2"));
                 }
                 return sb.ToString();
             }

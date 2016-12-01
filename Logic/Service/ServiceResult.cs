@@ -28,7 +28,7 @@ namespace Logic.Service
         }
     }
 
-    public class ServiceResult<T> : ServiceResult where T : class
+    public class ServiceResult<T> : ServiceResult
     {
         private T _result;
         public T Result {

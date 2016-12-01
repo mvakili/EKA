@@ -44,6 +44,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PersianDate, Version=1.3.6100.33392, Culture=neutral, PublicKeyToken=a05888e517b37222, processorArchitecture=MSIL">
+      <HintPath>..\packages\PersianDate.2.1.8\lib\net45\PersianDate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -91,8 +95,20 @@
     <Compile Include="UI\Form\Defining\AddOrEditMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Form\Defining\AddOrEditMaterial.Designer.cs">
+    <Compile Include="UI\Form\Defining\AddOrEditMaterial.designer.cs">
       <DependentUpon>AddOrEditMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form\Defining\Material.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form\Defining\Material.designer.cs">
+      <DependentUpon>Material.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form\User\AddOrEditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form\User\AddOrEditUser.Designer.cs">
+      <DependentUpon>AddOrEditUser.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Form\Defining\AddOrEditMaterialGroup.cs">
       <SubType>Form</SubType>
@@ -130,11 +146,11 @@
     <Compile Include="UI\Form\Defining\UnitGroup.Designer.cs">
       <DependentUpon>UnitGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Form\Defining\Material.cs">
+    <Compile Include="UI\Form\User\User.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Form\Defining\Material.Designer.cs">
-      <DependentUpon>Material.cs</DependentUpon>
+    <Compile Include="UI\Form\User\User.Designer.cs">
+      <DependentUpon>User.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Form\Login.cs">
       <SubType>Form</SubType>
@@ -170,6 +186,12 @@
     <EmbeddedResource Include="UI\Form\Defining\AddOrEditMaterial.resx">
       <DependentUpon>AddOrEditMaterial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form\Defining\Material.resx">
+      <DependentUpon>Material.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form\User\AddOrEditUser.resx">
+      <DependentUpon>AddOrEditUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Form\Defining\AddOrEditMaterialGroup.resx">
       <DependentUpon>AddOrEditMaterialGroup.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,8 +210,8 @@
     <EmbeddedResource Include="UI\Form\Defining\UnitGroup.resx">
       <DependentUpon>UnitGroup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Form\Defining\Material.resx">
-      <DependentUpon>Material.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Form\User\User.resx">
+      <DependentUpon>User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Form\Login.fa-IR.resx">
       <DependentUpon>Login.cs</DependentUpon>
