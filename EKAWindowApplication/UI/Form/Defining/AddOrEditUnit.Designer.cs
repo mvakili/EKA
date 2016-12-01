@@ -54,12 +54,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(181, 13);
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(75, 13);
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // radLabel1
@@ -101,7 +99,6 @@
             this.txtFactor.Location = new System.Drawing.Point(96, 90);
             this.txtFactor.Name = "txtFactor";
             this.txtFactor.NullText = "1";
-            this.txtFactor.SelectionStart = 1;
             this.txtFactor.Size = new System.Drawing.Size(181, 24);
             this.txtFactor.TabIndex = 8;
             this.txtFactor.Text = "1";

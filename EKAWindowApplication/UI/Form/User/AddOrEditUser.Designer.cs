@@ -81,12 +81,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(199, 13);
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(93, 13);
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // radLabel1

@@ -58,31 +58,20 @@
             // 
             this.pnlSelect.Location = new System.Drawing.Point(0, 503);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(498, 13);
-            // 
-            // btnAccept
-            // 
-            this.btnAccept.Location = new System.Drawing.Point(392, 13);
-            // 
             // ControlsContainer
             // 
             this.ControlsContainer.Padding = new System.Windows.Forms.Padding(1);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(861, 13);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(754, 13);
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(647, 13);
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnSearch

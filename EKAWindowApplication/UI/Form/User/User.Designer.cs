@@ -85,14 +85,6 @@
             // 
             this.pnlSelect.Location = new System.Drawing.Point(0, 503);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(399, 13);
-            // 
-            // btnAccept
-            // 
-            this.btnAccept.Location = new System.Drawing.Point(293, 13);
-            // 
             // ControlsContainer
             // 
             this.ControlsContainer.Padding = new System.Windows.Forms.Padding(1);
@@ -111,7 +103,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Size = new System.Drawing.Size(80, 105);
+            this.btnSearch.Size = new System.Drawing.Size(101, 105);
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // pnlSearch

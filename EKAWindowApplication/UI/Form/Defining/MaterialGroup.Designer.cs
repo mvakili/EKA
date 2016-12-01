@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn21 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn22 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn23 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn24 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
             this.rgvList = new Telerik.WinControls.UI.RadGridView();
             this.txtMaterialGroupID = new Telerik.WinControls.UI.RadTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,36 +61,25 @@
             // 
             this.pnlSelect.Location = new System.Drawing.Point(0, 503);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(480, 13);
-            // 
-            // btnAccept
-            // 
-            this.btnAccept.Location = new System.Drawing.Point(374, 13);
-            // 
             // ControlsContainer
             // 
             this.ControlsContainer.Padding = new System.Windows.Forms.Padding(1);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(825, 13);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(718, 13);
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(611, 13);
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnSearch
             // 
-            this.btnSearch.Size = new System.Drawing.Size(80, 130);
+            this.btnSearch.Size = new System.Drawing.Size(101, 105);
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // pnlSearch
@@ -113,28 +102,28 @@
             // 
             this.rgvList.MasterTemplate.AllowAddNewRow = false;
             this.rgvList.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn21.FieldName = "MaterialGroupID";
-            gridViewTextBoxColumn21.HeaderText = "کد";
-            gridViewTextBoxColumn21.Name = "MaterialGroupID";
-            gridViewTextBoxColumn21.Width = 24;
-            gridViewTextBoxColumn22.FieldName = "Name";
-            gridViewTextBoxColumn22.HeaderText = "نام";
-            gridViewTextBoxColumn22.Name = "Name";
-            gridViewTextBoxColumn22.Width = 27;
-            gridViewTextBoxColumn23.FieldName = "AvailableAmount";
-            gridViewTextBoxColumn23.HeaderText = "مقدار موجود";
-            gridViewTextBoxColumn23.Name = "AvailableAmount";
-            gridViewTextBoxColumn23.Width = 86;
-            gridViewTextBoxColumn24.FieldName = "UnitName";
-            gridViewTextBoxColumn24.HeaderText = "واحد";
-            gridViewTextBoxColumn24.Name = "UnitName";
-            gridViewTextBoxColumn24.Width = 837;
+            gridViewTextBoxColumn9.FieldName = "MaterialGroupID";
+            gridViewTextBoxColumn9.HeaderText = "کد";
+            gridViewTextBoxColumn9.Name = "MaterialGroupID";
+            gridViewTextBoxColumn9.Width = 24;
+            gridViewTextBoxColumn10.FieldName = "Name";
+            gridViewTextBoxColumn10.HeaderText = "نام";
+            gridViewTextBoxColumn10.Name = "Name";
+            gridViewTextBoxColumn10.Width = 27;
+            gridViewTextBoxColumn11.FieldName = "AvailableAmount";
+            gridViewTextBoxColumn11.HeaderText = "مقدار موجود";
+            gridViewTextBoxColumn11.Name = "AvailableAmount";
+            gridViewTextBoxColumn11.Width = 86;
+            gridViewTextBoxColumn12.FieldName = "UnitName";
+            gridViewTextBoxColumn12.HeaderText = "واحد";
+            gridViewTextBoxColumn12.Name = "UnitName";
+            gridViewTextBoxColumn12.Width = 837;
             this.rgvList.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn21,
-            gridViewTextBoxColumn22,
-            gridViewTextBoxColumn23,
-            gridViewTextBoxColumn24});
-            this.rgvList.MasterTemplate.ViewDefinition = tableViewDefinition6;
+            gridViewTextBoxColumn9,
+            gridViewTextBoxColumn10,
+            gridViewTextBoxColumn11,
+            gridViewTextBoxColumn12});
+            this.rgvList.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.rgvList.Name = "rgvList";
             this.rgvList.ReadOnly = true;
             this.rgvList.Size = new System.Drawing.Size(992, 289);
@@ -144,7 +133,7 @@
             // txtMaterialGroupID
             // 
             this.txtMaterialGroupID.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtMaterialGroupID.Location = new System.Drawing.Point(810, 0);
+            this.txtMaterialGroupID.Location = new System.Drawing.Point(807, 10);
             this.txtMaterialGroupID.Name = "txtMaterialGroupID";
             this.txtMaterialGroupID.Size = new System.Drawing.Size(103, 24);
             this.txtMaterialGroupID.TabIndex = 6;
@@ -154,11 +143,11 @@
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Location = new System.Drawing.Point(913, 0);
+            this.label1.Location = new System.Drawing.Point(910, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 19);
+            this.label1.Size = new System.Drawing.Size(80, 19);
             this.label1.TabIndex = 7;
-            this.label1.Text = "کد گروه کالا";
+            this.label1.Text = "کد گروه کالا:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MaterialGroup
