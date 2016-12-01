@@ -91,6 +91,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.ShowItemToolTips = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "";
             ((System.ComponentModel.ISupportInitialize)(this.pnlSelect)).EndInit();
             this.pnlSelect.ResumeLayout(false);
