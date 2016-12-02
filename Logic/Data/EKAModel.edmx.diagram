@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d4dd7ec4d2cb4c80b6a878dcec83ff7b" Name="Diagram1" ZoomLevel="49">
+      <Diagram DiagramId="d4dd7ec4d2cb4c80b6a878dcec83ff7b" Name="Diagram1" ZoomLevel="83">
         <EntityTypeShape EntityType="EKAModel.Material" Width="1.5" PointX="3.625" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EKAModel.MaterialExistance" Width="1.5" PointX="13.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="EKAModel.MaterialGroup" Width="1.5" PointX="3.375" PointY="9.75" IsExpanded="true" />
@@ -22,6 +22,7 @@
         <AssociationConnector Association="EKAModel.FK_Order_WareHouse1" ManuallyRouted="false" />
         <AssociationConnector Association="EKAModel.FK_Unit_UnitGroup" ManuallyRouted="false" />
         <AssociationConnector Association="EKAModel.FK_WareHouse_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EKAModel.FK_Order_WareHouse" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

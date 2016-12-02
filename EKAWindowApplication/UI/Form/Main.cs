@@ -87,5 +87,10 @@ namespace EKAWindowApplication.UI.Form
         {
             ShowForm(this, new User.User());
         }
+
+        private void btnWareHouse_Click(object sender, EventArgs e)
+        {
+            ShowForm(this,new WareHouse());
+        }
     }
 }

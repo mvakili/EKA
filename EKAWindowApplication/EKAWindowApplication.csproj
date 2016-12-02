@@ -98,11 +98,23 @@
     <Compile Include="UI\Form\Defining\AddOrEditMaterial.designer.cs">
       <DependentUpon>AddOrEditMaterial.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Form\Defining\AddOrEditWareHouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form\Defining\AddOrEditWareHouse.Designer.cs">
+      <DependentUpon>AddOrEditWareHouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Form\Defining\Material.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Form\Defining\Material.designer.cs">
       <DependentUpon>Material.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form\Defining\WareHouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form\Defining\WareHouse.Designer.cs">
+      <DependentUpon>WareHouse.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Form\User\AddOrEditUser.cs">
       <SubType>Form</SubType>
@@ -186,8 +198,14 @@
     <EmbeddedResource Include="UI\Form\Defining\AddOrEditMaterial.resx">
       <DependentUpon>AddOrEditMaterial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form\Defining\AddOrEditWareHouse.resx">
+      <DependentUpon>AddOrEditWareHouse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Form\Defining\Material.resx">
       <DependentUpon>Material.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form\Defining\WareHouse.resx">
+      <DependentUpon>WareHouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Form\User\AddOrEditUser.resx">
       <DependentUpon>AddOrEditUser.cs</DependentUpon>
@@ -275,6 +293,7 @@
     <None Include="Resources\delete1.ico" />
     <None Include="Resources\edit1.ico" />
     <None Include="Resources\search1.ico" />
+    <Content Include="Resources\groceries.png" />
     <Content Include="signs.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

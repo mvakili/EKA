@@ -236,6 +236,7 @@
             this.btnWareHouse.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnWareHouse.Text = "انبار";
             this.btnWareHouse.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnWareHouse.Click += new System.EventHandler(this.btnWareHouse_Click);
             // 
             // ribbonTab2
             // 

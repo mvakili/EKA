@@ -23,5 +23,6 @@ namespace Logic.Data
         public virtual Material Material { get; set; }
         public virtual User User { get; set; }
         public virtual WareHouse WareHouse { get; set; }
+        public virtual WareHouse WareHouse1 { get; set; }
     }
 }

@@ -1,99 +1,123 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Logic.Data;
 
 namespace Logic.Service
 {
     public static class WareHouseService
     {
-        public static ServiceResult<WareHouse> CreateWareHouse(string name, bool allowReceive = true, bool allowSend = true)
+        public static ServiceResult<WareHouse> CreateWareHouse(string name, bool allowSend, bool allowReceive, User manager, bool isCountable)
         {
             var result = new ServiceResult<WareHouse>();
-            var db = new EKAEntities();
-            var spResult = db.CreateWareHouse(UserService.Me.UserID, name, allowReceive, allowSend).Single().Value;
-            if (spResult > 0)
-                result.Result = db.WareHouses.Find(spResult);
-            return result;
-        }
-        public static ServiceResult SetManagerToWareHouse(WareHouse wareHouse, User user)
-        {
-            var result = new ServiceResult();
-            var db = new EKAEntities();
-            var spResult = db.SetManagerToWareHouse(UserService.Me.UserID, wareHouse.WareHouseID, user.UserID).Single().Value;
-            switch (spResult)
+            if (!UserService.Me.IsAdmin)
             {
-                case -1: result.Status = ResultStatus.AccessFail; break;
-                case 0: result.Status = ResultStatus.Ok; break;
-                default: result.Status = ResultStatus.Unknown; break;
+                result.Status = ResultStatus.AccessFail;
+            }
+            else
+            {
+                try
+                {
+                    var db = new EKAEntities();
+                    var wareHouse = new WareHouse()
+                    {
+                        Name = name,
+                        AllowSend =  allowSend,
+                        AllowReceive = allowReceive,
+                        UserID = manager.UserID,
+                        IsCountable = isCountable,
+                        
+                    };
+                    db.WareHouses.Add(wareHouse);
+                    db.SaveChanges();
+                    result.Result = wareHouse;
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
             return result;
         }
-        public static ServiceResult RemoveManagerOfWareHouse(WareHouse wareHouse)
+
+        public static ServiceResult EditWareHouse(WareHouse wareHouse, string name, bool allowSend, bool allowReceive, User manager, bool isCountable)
         {
             var result = new ServiceResult();
-            var db = new EKAEntities();
-            var spResult = db.RemoveManagerOfWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
-            switch (spResult)
+
+            if (!UserService.Me.IsAdmin && wareHouse.User.UserID != UserService.Me.UserID)
             {
-                case -1: result.Status = ResultStatus.AccessFail; break;
-                case 0: result.Status = ResultStatus.Ok; break;
-                default: result.Status = ResultStatus.Unknown; break;
+                result.Status = ResultStatus.AccessFail;
+            }
+            else
+            {
+                try
+                {
+                    var db = new EKAEntities();
+                    var toEdit = db.WareHouses.Find(wareHouse.WareHouseID);
+                    toEdit.Name = name;
+                    toEdit.AllowSend = allowSend;
+                    toEdit.AllowReceive = allowReceive;
+                    toEdit.UserID = manager.UserID;
+                    toEdit.IsCountable = isCountable;
+                    db.SaveChanges();
+                    result.Status = ResultStatus.Ok;
+                }
+                catch
+                {
+                    result.Status = ResultStatus.Unknown;
+                }
             }
             return result;
         }
-        public static ServiceResult DisableAllowSendWareHouse(WareHouse wareHouse)
+
+        public static ServiceResult<IQueryable<WareHouse>> GetWareHouses()
         {
-            var result = new ServiceResult();
-            var db = new EKAEntities();
-            var spResult = db.DisableAllowSendWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
-            switch (spResult)
+            var result = new ServiceResult<IQueryable<WareHouse>>();
+            try
             {
-                case -1: result.Status = ResultStatus.AccessFail; break;
-                case 0: result.Status = ResultStatus.Ok; break;
-                default: result.Status = ResultStatus.Unknown; break;
+
+                var db = new EKAEntities();
+                result.Result = db.WareHouses;
             }
+            catch
+            {
+                result.Status = ResultStatus.Unknown;
+            }
+
             return result;
         }
-        public static ServiceResult EnableAllowSendWareHouse(WareHouse wareHouse)
+
+        public static ServiceResult RemoveWareHouse(WareHouse wareHouse)
         {
             var result = new ServiceResult();
-            var db = new EKAEntities();
-            var spResult = db.EnableAllowSendWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
-            switch (spResult)
+            if (!UserService.Me.IsAdmin)
             {
-                case -1: result.Status = ResultStatus.AccessFail; break;
-                case 0: result.Status = ResultStatus.Ok; break;
-                default: result.Status = ResultStatus.Unknown; break;
+                result.Status = ResultStatus.AccessFail;
             }
-            return result;
-        }
-        public static ServiceResult DisableAllowReceiveWareHouse(WareHouse wareHouse)
-        {
-            var result = new ServiceResult();
-            var db = new EKAEntities();
-            var spResult = db.DisableAllowReceiveWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
-            switch (spResult)
+            else
+            if (wareHouse.Orders.Any())
             {
-                case -1: result.Status = ResultStatus.AccessFail; break;
-                case 0: result.Status = ResultStatus.Ok; break;
-                default: result.Status = ResultStatus.Unknown; break;
+                result.Status = ResultStatus.AccessFail;
             }
-            return result;
-        }
-        public static ServiceResult EnableAllowReceiveWareHouse(WareHouse wareHouse)
-        {
-            var result = new ServiceResult();
-            var db = new EKAEntities();
-            var spResult = db.EnableAllowReceiveWareHouse(UserService.Me.UserID, wareHouse.WareHouseID).Single().Value;
-            switch (spResult)
+            else
+            if (wareHouse.MaterialExistances.Any())
             {
-                case -1: result.Status = ResultStatus.AccessFail; break;
-                case 0: result.Status = ResultStatus.Ok; break;
-                default: result.Status = ResultStatus.Unknown; break;
+                result.Status = ResultStatus.AccessFail;
             }
+            else
+            {
+                try
+                {
+                    var db = new EKAEntities();
+                    db.WareHouses.Remove(db.WareHouses.Find(wareHouse.WareHouseID));
+                    db.SaveChanges();
+                    result.Status = ResultStatus.Ok;
+                }
+                catch
+                {
+                    result.Status = ResultStatus.Unknown;
+                }
+            }
+
             return result;
         }
     }

@@ -153,15 +153,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_WareHouse1">
+        <Association Name="FK_Order_WareHouse">
           <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WareHouse">
               <PropertyRef Name="WareHouseID" />
             </Principal>
             <Dependent Role="Order">
-              <PropertyRef Name="OrderID" />
+              <PropertyRef Name="ToWareHouseID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -336,7 +336,7 @@
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_WareHouse1" Association="Self.FK_Order_WareHouse1">
+          <AssociationSet Name="FK_Order_WareHouse" Association="Self.FK_Order_WareHouse">
             <End Role="WareHouse" EntitySet="WareHouse" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
@@ -397,6 +397,7 @@
           <NavigationProperty Name="Material" Relationship="Self.FK_Order_material" FromRole="Order" ToRole="Material" />
           <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
           <NavigationProperty Name="WareHouse" Relationship="Self.FK_Order_WareHouse1" FromRole="Order" ToRole="WareHouse" />
+          <NavigationProperty Name="WareHouse1" Relationship="EKAModel.FK_Order_WareHouse" FromRole="Order" ToRole="WareHouse" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -443,9 +444,9 @@
           <Property Name="AllowReceive" Type="Boolean" Nullable="false" />
           <Property Name="UserID" Type="Int32" />
           <NavigationProperty Name="MaterialExistances" Relationship="Self.FK_MaterialExistance_WareHouse" FromRole="WareHouse" ToRole="MaterialExistance" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_WareHouse1" FromRole="WareHouse" ToRole="Order" />
           <NavigationProperty Name="User" Relationship="Self.FK_WareHouse_User" FromRole="WareHouse" ToRole="User" />
           <Property Name="IsCountable" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="EKAModel.FK_Order_WareHouse" FromRole="WareHouse" ToRole="Order" />
         </EntityType>
         <Association Name="FK_material_MaterialGroup">
           <End Role="MaterialGroup" Type="Self.MaterialGroup" Multiplicity="1" />
@@ -692,7 +693,23 @@
             <Parameter Name="ActorID" Mode="In" Type="Int32" />
             <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <AssociationSet Name="FK_Order_WareHouse" Association="EKAModel.FK_Order_WareHouse">
+            <End Role="WareHouse" EntitySet="WareHouses" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Order_WareHouse">
+          <End Type="EKAModel.WareHouse" Role="WareHouse" Multiplicity="1" />
+          <End Type="EKAModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WareHouse">
+              <PropertyRef Name="WareHouseID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ToWareHouseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

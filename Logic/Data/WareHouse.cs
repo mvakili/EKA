@@ -18,6 +18,7 @@ namespace Logic.Data
         public WareHouse()
         {
             this.MaterialExistances = new HashSet<MaterialExistance>();
+            this.Orders = new HashSet<Order>();
         }
     
         public int WareHouseID { get; set; }
@@ -29,7 +30,8 @@ namespace Logic.Data
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MaterialExistance> MaterialExistances { get; set; }
-        public virtual Order Order { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
