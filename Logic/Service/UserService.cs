@@ -7,7 +7,21 @@ namespace Logic.Service
 {
     public static class UserService
     {
-        public static User Me;
+        private static User _me;
+
+        public static User Me
+        {
+            get
+            {
+                if (_me != null)
+                { 
+                    var db = new EKAEntities();
+                    _me = db.Users.Find(_me.UserID);
+                }
+                return _me;
+            }
+            private set { _me = value; }
+        }
         public static bool IsLoggedIn => Me != null;
 
         public static ServiceResult<User> CreateUser(string userName, string firstName, string lastName, string password, bool isActive = true, bool isAdmin = false)
