@@ -53,7 +53,6 @@
             this.ribbonTab3 = new Telerik.WinControls.UI.RibbonTab();
             this.radRibbonBarGroup5 = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.btnUser = new Telerik.WinControls.UI.RadButtonElement();
-            this.btnWareHouseManager = new Telerik.WinControls.UI.RadButtonElement();
             ((System.ComponentModel.ISupportInitialize)(this.radStatusStrip1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
@@ -158,7 +157,7 @@
             // 
             // ribbonTab1
             // 
-            this.ribbonTab1.IsSelected = false;
+            this.ribbonTab1.IsSelected = true;
             this.ribbonTab1.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup1,
             this.radRibbonBarGroup2});
@@ -179,34 +178,47 @@
             // 
             // btnMaterial
             // 
+            this.btnMaterial.Image = global::EKAWindowApplication.Properties.Resources.groceries;
+            this.btnMaterial.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.btnMaterial.Margin = new System.Windows.Forms.Padding(0);
             this.btnMaterial.Name = "btnMaterial";
             this.btnMaterial.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnMaterial.Text = "کالا";
+            this.btnMaterial.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMaterial.Click += new System.EventHandler(this.btnMaterial_Click);
             // 
             // btnMaterialGroup
             // 
+            this.btnMaterialGroup.FlipText = false;
+            this.btnMaterialGroup.Image = ((System.Drawing.Image)(resources.GetObject("btnMaterialGroup.Image")));
+            this.btnMaterialGroup.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.btnMaterialGroup.Margin = new System.Windows.Forms.Padding(0);
             this.btnMaterialGroup.Name = "btnMaterialGroup";
             this.btnMaterialGroup.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnMaterialGroup.Text = "گروه کالایی";
+            this.btnMaterialGroup.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMaterialGroup.Click += new System.EventHandler(this.btnMaterialGroup_Click);
             // 
             // btnUnit
             // 
+            this.btnUnit.Image = ((System.Drawing.Image)(resources.GetObject("btnUnit.Image")));
+            this.btnUnit.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.btnUnit.Margin = new System.Windows.Forms.Padding(0);
             this.btnUnit.Name = "btnUnit";
             this.btnUnit.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnUnit.Text = "واحد";
+            this.btnUnit.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUnit.Click += new System.EventHandler(this.btnUnit_Click);
             // 
             // btnUnitGroup
             // 
+            this.btnUnitGroup.Image = ((System.Drawing.Image)(resources.GetObject("btnUnitGroup.Image")));
+            this.btnUnitGroup.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.btnUnitGroup.Margin = new System.Windows.Forms.Padding(0);
             this.btnUnitGroup.Name = "btnUnitGroup";
             this.btnUnitGroup.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnUnitGroup.Text = "گروه های واحدی";
+            this.btnUnitGroup.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUnitGroup.Click += new System.EventHandler(this.btnUnitGroup_Click);
             // 
             // radRibbonBarGroup2
@@ -218,9 +230,12 @@
             // 
             // btnWareHouse
             // 
+            this.btnWareHouse.Image = ((System.Drawing.Image)(resources.GetObject("btnWareHouse.Image")));
+            this.btnWareHouse.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.btnWareHouse.Name = "btnWareHouse";
             this.btnWareHouse.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnWareHouse.Text = "انبار";
+            this.btnWareHouse.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // ribbonTab2
             // 
@@ -240,9 +255,12 @@
             // 
             // btnOrder
             // 
+            this.btnOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnOrder.Image")));
+            this.btnOrder.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnOrder.Text = "حواله";
+            this.btnOrder.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // radRibbonBarGroup4
             // 
@@ -254,19 +272,25 @@
             // 
             // btnMaterialExistance
             // 
+            this.btnMaterialExistance.Image = ((System.Drawing.Image)(resources.GetObject("btnMaterialExistance.Image")));
+            this.btnMaterialExistance.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.btnMaterialExistance.Name = "btnMaterialExistance";
             this.btnMaterialExistance.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnMaterialExistance.Text = "موجودی انبار";
+            this.btnMaterialExistance.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // btnOrderReport
             // 
+            this.btnOrderReport.Image = ((System.Drawing.Image)(resources.GetObject("btnOrderReport.Image")));
+            this.btnOrderReport.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.btnOrderReport.Name = "btnOrderReport";
             this.btnOrderReport.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnOrderReport.Text = "حواله";
+            this.btnOrderReport.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // ribbonTab3
             // 
-            this.ribbonTab3.IsSelected = true;
+            this.ribbonTab3.IsSelected = false;
             this.ribbonTab3.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup5});
             this.ribbonTab3.Name = "ribbonTab3";
@@ -275,23 +299,19 @@
             // radRibbonBarGroup5
             // 
             this.radRibbonBarGroup5.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.btnUser,
-            this.btnWareHouseManager});
+            this.btnUser});
             this.radRibbonBarGroup5.Name = "radRibbonBarGroup5";
             this.radRibbonBarGroup5.Text = "مدیریت کاربران";
             // 
             // btnUser
             // 
+            this.btnUser.Image = ((System.Drawing.Image)(resources.GetObject("btnUser.Image")));
+            this.btnUser.ImageAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.btnUser.Name = "btnUser";
             this.btnUser.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnUser.Text = "کاربران";
+            this.btnUser.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
-            // 
-            // btnWareHouseManager
-            // 
-            this.btnWareHouseManager.Name = "btnWareHouseManager";
-            this.btnWareHouseManager.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.btnWareHouseManager.Text = "دسترسی به انبار";
             // 
             // Main
             // 
@@ -346,7 +366,6 @@
         private Telerik.WinControls.UI.RadButtonElement btnOrderReport;
         private Telerik.WinControls.UI.RadRibbonBarGroup radRibbonBarGroup5;
         private Telerik.WinControls.UI.RadButtonElement btnUser;
-        private Telerik.WinControls.UI.RadButtonElement btnWareHouseManager;
         private Telerik.WinControls.UI.RadPageView radPageView1;
     }
 }

@@ -43,11 +43,11 @@
             this.radLabel6 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
-            this.rbIsNotActive = new Telerik.WinControls.UI.RadRadioButton();
-            this.rbIsActive = new Telerik.WinControls.UI.RadRadioButton();
+            this.chbIsNotActive = new Telerik.WinControls.UI.RadCheckBox();
+            this.chbIsActive = new Telerik.WinControls.UI.RadCheckBox();
             this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
-            this.rbIsNotAdmin = new Telerik.WinControls.UI.RadRadioButton();
-            this.rbIsAdmin = new Telerik.WinControls.UI.RadRadioButton();
+            this.chbIsNotAdmin = new Telerik.WinControls.UI.RadCheckBox();
+            this.chbIsAdmin = new Telerik.WinControls.UI.RadCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pnlSelect)).BeginInit();
             this.pnlSelect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
@@ -72,12 +72,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rbIsNotActive)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rbIsActive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chbIsNotActive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chbIsActive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
             this.radPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rbIsNotAdmin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rbIsAdmin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chbIsNotAdmin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chbIsAdmin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -225,8 +225,8 @@
             // 
             // radPanel2
             // 
-            this.radPanel2.Controls.Add(this.rbIsNotActive);
-            this.radPanel2.Controls.Add(this.rbIsActive);
+            this.radPanel2.Controls.Add(this.chbIsNotActive);
+            this.radPanel2.Controls.Add(this.chbIsActive);
             this.radPanel2.Location = new System.Drawing.Point(3, 28);
             this.radPanel2.Name = "radPanel2";
             this.radPanel2.Size = new System.Drawing.Size(163, 30);
@@ -234,29 +234,29 @@
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel2.GetChildAt(0).GetChildAt(1))).Enabled = false;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel2.GetChildAt(0).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Hidden;
             // 
-            // rbIsNotActive
+            // chbIsNotActive
             // 
-            this.rbIsNotActive.Location = new System.Drawing.Point(75, 3);
-            this.rbIsNotActive.Name = "rbIsNotActive";
-            this.rbIsNotActive.Size = new System.Drawing.Size(40, 22);
-            this.rbIsNotActive.TabIndex = 15;
-            this.rbIsNotActive.TabStop = false;
-            this.rbIsNotActive.Text = "خیر";
+            this.chbIsNotActive.Location = new System.Drawing.Point(75, 3);
+            this.chbIsNotActive.Name = "chbIsNotActive";
+            this.chbIsNotActive.Size = new System.Drawing.Size(40, 22);
+            this.chbIsNotActive.TabIndex = 15;
+            this.chbIsNotActive.TabStop = false;
+            this.chbIsNotActive.Text = "خیر";
             // 
-            // rbIsActive
+            // chbIsActive
             // 
-            this.rbIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rbIsActive.Location = new System.Drawing.Point(119, 3);
-            this.rbIsActive.Name = "rbIsActive";
-            this.rbIsActive.Size = new System.Drawing.Size(38, 22);
-            this.rbIsActive.TabIndex = 14;
-            this.rbIsActive.Text = "بله";
-            this.rbIsActive.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
+            this.chbIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbIsActive.Location = new System.Drawing.Point(119, 3);
+            this.chbIsActive.Name = "chbIsActive";
+            this.chbIsActive.Size = new System.Drawing.Size(38, 22);
+            this.chbIsActive.TabIndex = 14;
+            this.chbIsActive.Text = "بله";
+            this.chbIsActive.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             // 
             // radPanel3
             // 
-            this.radPanel3.Controls.Add(this.rbIsNotAdmin);
-            this.radPanel3.Controls.Add(this.rbIsAdmin);
+            this.radPanel3.Controls.Add(this.chbIsNotAdmin);
+            this.radPanel3.Controls.Add(this.chbIsAdmin);
             this.radPanel3.Location = new System.Drawing.Point(3, -1);
             this.radPanel3.Name = "radPanel3";
             this.radPanel3.Size = new System.Drawing.Size(163, 28);
@@ -264,24 +264,24 @@
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel3.GetChildAt(0).GetChildAt(1))).Enabled = false;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel3.GetChildAt(0).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Hidden;
             // 
-            // rbIsNotAdmin
+            // chbIsNotAdmin
             // 
-            this.rbIsNotAdmin.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rbIsNotAdmin.Location = new System.Drawing.Point(75, 3);
-            this.rbIsNotAdmin.Name = "rbIsNotAdmin";
-            this.rbIsNotAdmin.Size = new System.Drawing.Size(40, 22);
-            this.rbIsNotAdmin.TabIndex = 15;
-            this.rbIsNotAdmin.Text = "خیر";
-            this.rbIsNotAdmin.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
+            this.chbIsNotAdmin.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbIsNotAdmin.Location = new System.Drawing.Point(75, 3);
+            this.chbIsNotAdmin.Name = "chbIsNotAdmin";
+            this.chbIsNotAdmin.Size = new System.Drawing.Size(40, 22);
+            this.chbIsNotAdmin.TabIndex = 15;
+            this.chbIsNotAdmin.Text = "خیر";
+            this.chbIsNotAdmin.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             // 
-            // rbIsAdmin
+            // chbIsAdmin
             // 
-            this.rbIsAdmin.Location = new System.Drawing.Point(119, 3);
-            this.rbIsAdmin.Name = "rbIsAdmin";
-            this.rbIsAdmin.Size = new System.Drawing.Size(38, 22);
-            this.rbIsAdmin.TabIndex = 14;
-            this.rbIsAdmin.TabStop = false;
-            this.rbIsAdmin.Text = "بله";
+            this.chbIsAdmin.Location = new System.Drawing.Point(119, 3);
+            this.chbIsAdmin.Name = "chbIsAdmin";
+            this.chbIsAdmin.Size = new System.Drawing.Size(38, 22);
+            this.chbIsAdmin.TabIndex = 14;
+            this.chbIsAdmin.TabStop = false;
+            this.chbIsAdmin.Text = "بله";
             // 
             // User
             // 
@@ -326,13 +326,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
             this.radPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rbIsNotActive)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rbIsActive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chbIsNotActive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chbIsActive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).EndInit();
             this.radPanel3.ResumeLayout(false);
             this.radPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rbIsNotAdmin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rbIsAdmin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chbIsNotAdmin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chbIsAdmin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -347,10 +347,10 @@
         private Telerik.WinControls.UI.RadLabel radLabel6;
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadPanel radPanel2;
-        private Telerik.WinControls.UI.RadRadioButton rbIsNotActive;
-        private Telerik.WinControls.UI.RadRadioButton rbIsActive;
         private Telerik.WinControls.UI.RadPanel radPanel3;
-        private Telerik.WinControls.UI.RadRadioButton rbIsNotAdmin;
-        private Telerik.WinControls.UI.RadRadioButton rbIsAdmin;
+        private Telerik.WinControls.UI.RadCheckBox chbIsNotActive;
+        private Telerik.WinControls.UI.RadCheckBox chbIsActive;
+        private Telerik.WinControls.UI.RadCheckBox chbIsNotAdmin;
+        private Telerik.WinControls.UI.RadCheckBox chbIsAdmin;
     }
 }

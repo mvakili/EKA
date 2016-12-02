@@ -45,9 +45,16 @@ namespace EKAWindowApplication.UI.Form.Defining
             int materialId;
             int.TryParse(txtMaterialID.Text,out materialId);
 
+            var materialGroup = (Logic.Data.MaterialGroup) breMaterialGroup.Tag;
+            var materialGroupId = 0;
+            if (materialGroup != null)  materialGroupId =  materialGroup.MaterialGroupID;
+
             rgvList.DataSource = _data.Result
                 .Where(r =>  
                     materialId == 0 || r.MaterialID == materialId
+                )
+                .Where(r =>
+                    materialGroupId == 0 || (materialGroupId != 0 && r.MaterialGroup.MaterialGroupID == materialGroupId)
                 )
                 .Select(r => new
                 {
@@ -114,6 +121,16 @@ namespace EKAWindowApplication.UI.Form.Defining
         public void btnSearch_Click(object sender, EventArgs e)
         {
             Bind();
+        }
+
+        private void breMaterialGroup_Click(object sender, EventArgs e)
+        {
+            var form = new MaterialGroup() { SelectMode = true };
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                breMaterialGroup.Tag = form.Selected;
+                breMaterialGroup.Value = form.Selected?.Name;
+            }
         }
     }
 }

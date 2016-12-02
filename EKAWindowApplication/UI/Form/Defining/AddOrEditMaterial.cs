@@ -8,7 +8,8 @@ namespace EKAWindowApplication.UI.Form.Defining
 {
     public partial class AddOrEditMaterial : AddOrEditForm, IForm
     {
-        private Logic.Data.Material _material;
+        public Logic.Data.Material Selected { get; }
+
         public AddOrEditMaterial()
         {
             InitializeComponent();
@@ -20,31 +21,18 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
             InitializeComponent();
             EditMode = true;
-            _material = material;
+            Selected = material;
             Bind();
-        }
-
-        public Logic.Data.Material Material
-        {
-            get
-            {
-                return _material;
-            }
-
-            set
-            {
-                _material = value;
-            }
         }
 
         public void Bind()
         {
             if (EditMode)
             {
-                txtQty.Text = _material.Qty.ToString();
-                breMaterialGroup.Tag = _material.MaterialGroup;
-                breMaterialGroup.Value = _material.MaterialGroup.Name;
-                lblUnitName.Text = Material.MaterialGroup.Unit.Name;
+                txtQty.Text = Selected.Qty.ToString();
+                breMaterialGroup.Tag = Selected.MaterialGroup;
+                breMaterialGroup.Value = Selected.MaterialGroup.Name;
+                lblUnitName.Text = Selected.MaterialGroup.Unit.Name;
             }
         }
 
@@ -64,7 +52,7 @@ namespace EKAWindowApplication.UI.Form.Defining
             if (EditMode)
             {
                 
-                var result = MaterialService.EditMaterial(_material, (Logic.Data.MaterialGroup)breMaterialGroup.Tag, qty);
+                var result = MaterialService.EditMaterial(Selected, (Logic.Data.MaterialGroup)breMaterialGroup.Tag, qty);
                 switch (result.Status)
                 {
                     case ResultStatus.Ok:
@@ -98,8 +86,8 @@ namespace EKAWindowApplication.UI.Form.Defining
             if (form.ShowDialog() == DialogResult.OK)
             {
                 breMaterialGroup.Tag = form.Selected;
-                breMaterialGroup.Value = form.Selected.Name;
-                lblUnitName.Text = form.Selected.Unit.Name;
+                breMaterialGroup.Value = form.Selected?.Name;
+                lblUnitName.Text = form.Selected?.Unit.Name;
                 txtQty.Text = @"0";
             }
         }

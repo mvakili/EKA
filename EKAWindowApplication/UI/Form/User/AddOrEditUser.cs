@@ -5,11 +5,12 @@ using EKAWindowApplication.Properties;
 using EKAWindowApplication.UI.Template;
 using Logic.Service;
 
-namespace EKAWindowApplication.UI.Form.Defining
+namespace EKAWindowApplication.UI.Form.User
 {
     public partial class AddOrEditUser : AddOrEditForm, IForm
     {
-        private Logic.Data.User _user;
+        public Logic.Data.User Selected { get; }
+
         public AddOrEditUser()
         {
             InitializeComponent();
@@ -21,34 +22,23 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
             InitializeComponent();
             EditMode = true;
-            _user = user;
+            Selected = user;
             Bind();
-        }
-
-        public Logic.Data.User User
-        {
-            get
-            {
-                return _user;
-            }
-
-            set
-            {
-                _user = value;
-            }
         }
 
         public void Bind()
         {
             if (EditMode)
             {
-                txtUserName.Text = _user.UserName;
+                txtUserName.Text = Selected.UserName;
                 txtUserName.Enabled = false;
 
-                txtFirstName.Text = _user.FirstName;
-                txtLastName.Text = _user.LastName;
-                rbIsActive.IsChecked = _user.IsActive;
-                rbIsAdmin.IsChecked = _user.IsAdmin;
+                txtFirstName.Text = Selected.FirstName;
+                txtLastName.Text = Selected.LastName;
+                rbIsActive.IsChecked = Selected.IsActive;
+                rbIsAdmin.IsChecked = Selected.IsAdmin;
+                rbIsNotActive.IsChecked = !Selected.IsActive;
+                rbIsNotAdmin.IsChecked = !Selected.IsAdmin;
             }
         }
 
@@ -68,7 +58,7 @@ namespace EKAWindowApplication.UI.Form.Defining
             if (EditMode)
             {
                 
-                var result = UserService.EditUser(_user, txtFirstName.Text, txtLastName.Text,txtPassword.Text, isActive, isAdmin);
+                var result = UserService.EditUser(Selected, txtFirstName.Text, txtLastName.Text,txtPassword.Text, isActive, isAdmin);
                 switch (result.Status)
                 {
                     case ResultStatus.Ok:

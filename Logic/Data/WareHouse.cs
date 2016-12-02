@@ -25,6 +25,7 @@ namespace Logic.Data
         public bool AllowSend { get; set; }
         public bool AllowReceive { get; set; }
         public Nullable<int> UserID { get; set; }
+        public bool IsCountable { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MaterialExistance> MaterialExistances { get; set; }

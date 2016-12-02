@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows.Forms;
 using EKAWindowApplication.Properties;
-using EKAWindowApplication.UI.Form.Defining;
 using EKAWindowApplication.UI.Template;
 using Logic.Service;
 
@@ -43,17 +42,21 @@ namespace EKAWindowApplication.UI.Form.User
                 return;
             }
             var userName = txtUserName.Text.Trim();
-            var isAdmin = rbIsAdmin.IsChecked;
-            var isActive = rbIsActive.IsChecked;
+            var isAdminTrue = chbIsAdmin.IsChecked;
+            var isAdminFalse = chbIsNotAdmin.IsChecked;
+            var isActiveTrue = chbIsActive.IsChecked;
+            var isActiveFalse = chbIsNotActive.IsChecked;
             rgvList.DataSource = _data.Result
                 .Where(r =>  
                     userName == "" || r.UserName.StartsWith(userName)
                 )
                 .Where(r =>
-                    r.IsActive == isActive    
+                    (isActiveTrue && r.IsActive) ||
+                    (isActiveFalse && !r.IsActive)
                 )
                 .Where(r =>
-                    r.IsAdmin == isAdmin
+                    (isAdminTrue && r.IsAdmin) ||
+                    (isAdminFalse && !r.IsAdmin)
                 )
                 .ToList()
                 .Select(r => new

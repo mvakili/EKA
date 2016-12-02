@@ -8,7 +8,8 @@ namespace EKAWindowApplication.UI.Form.Defining
 {
     public partial class AddOrEditUnitGroup : AddOrEditForm, IForm
     {
-        private Logic.Data.UnitGroup _unitGroup;
+        public Logic.Data.UnitGroup Selected { get; }
+
         public AddOrEditUnitGroup()
         {
             InitializeComponent();
@@ -20,28 +21,15 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
             InitializeComponent();
             EditMode = true;
-            _unitGroup = unitGroup;
+            Selected = unitGroup;
             Bind();
-        }
-
-        public Logic.Data.UnitGroup UnitGroup
-        {
-            get
-            {
-                return _unitGroup;
-            }
-
-            set
-            {
-                _unitGroup = value;
-            }
         }
 
         public void Bind()
         {
             if (EditMode)
             {
-                txtName.Text = _unitGroup.Name;
+                txtName.Text = Selected.Name;
             }
         }
 
@@ -58,7 +46,7 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
             if (EditMode)
             {
-                var result = MaterialService.EditUnitGroup(_unitGroup, txtName.Text);
+                var result = MaterialService.EditUnitGroup(Selected, txtName.Text);
                 switch (result.Status)
                 {
                     case ResultStatus.Ok:

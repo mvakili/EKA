@@ -42,19 +42,22 @@ namespace EKAWindowApplication.UI.Form.Defining
                 MessageBox.Show(Resources.BindingError);
                 return;
             }
-
+            bool justExists = chkJustExists.IsChecked;
             int materialGroupId;
             int.TryParse(txtMaterialGroupID.Text, out materialGroupId);
             rgvList.DataSource = _data.Result
                 .Where(r =>  
                     materialGroupId == 0 || r.MaterialGroupID == materialGroupId
                 )
+                .Where( r =>
+                    !justExists || (justExists && ((r.MaterialExistances.Any(u => u.WareHouse.IsCountable) ? r.MaterialExistances.Where(u => u.WareHouse.IsCountable).Sum(u => u.Qty) : 0) > 0))
+                )
                 .Select(r => new
                 {
                    r.MaterialGroupID,
                    r.Name,
                    UnitName = r.Unit.Name,
-                   AvailableAmount = r.MaterialExistances.Any() ? r.MaterialExistances.Sum(u => u.Qty) : 0
+                   AvailableAmount = r.MaterialExistances.Any(u => u.WareHouse.IsCountable) ? r.MaterialExistances.Where(u => u.WareHouse.IsCountable).Sum(u => u.Qty) : 0
                 }).ToList();
             rgvList.BestFitColumns();
         }

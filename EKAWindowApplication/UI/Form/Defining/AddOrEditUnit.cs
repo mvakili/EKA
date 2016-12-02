@@ -8,7 +8,8 @@ namespace EKAWindowApplication.UI.Form.Defining
 {
     public partial class AddOrEditUnit : AddOrEditForm, IForm
     {
-        private Logic.Data.Unit _unit;
+        public Logic.Data.Unit Selected { get; }
+
         public AddOrEditUnit()
         {
             InitializeComponent();
@@ -20,50 +21,23 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
             InitializeComponent();
             EditMode = true;
-            _unit = unit;
+            Selected = unit;
             Bind();
-        }
-
-        public Logic.Data.Unit UnitGroup
-        {
-            get
-            {
-                return _unit;
-            }
-
-            set
-            {
-                _unit = value;
-            }
-        }
-
-        public Logic.Data.Unit UnitGroup1
-        {
-            get
-            {
-                return _unit;
-            }
-
-            set
-            {
-                _unit = value;
-            }
         }
 
         public void Bind()
         {
             if (EditMode)
             {
-                txtName.Text = _unit.Name;
-                breUnitGroup.Tag = _unit.UnitGroup;
-                breUnitGroup.Value = _unit.UnitGroup.Name;
-                txtFactor.Text = _unit.Factor.ToString();
+                txtName.Text = Selected.Name;
+                breUnitGroup.Tag = Selected.UnitGroup;
+                breUnitGroup.Value = Selected.UnitGroup.Name;
+                txtFactor.Text = Selected.Factor.ToString();
             }
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
         }
 
         private void btnCancel_Click(object sender, EventArgs e) 
@@ -77,7 +51,7 @@ namespace EKAWindowApplication.UI.Form.Defining
             {
                 double factor = 1;
                 double.TryParse(txtFactor.Text, out factor);
-                var result = MaterialService.EditUnit(_unit, txtName.Text, (Logic.Data.UnitGroup)breUnitGroup.Tag, factor);
+                var result = MaterialService.EditUnit(Selected, txtName.Text, (Logic.Data.UnitGroup)breUnitGroup.Tag, factor);
                 switch (result.Status)
                 {
                     case ResultStatus.Ok:
@@ -91,7 +65,7 @@ namespace EKAWindowApplication.UI.Form.Defining
             }
             if (!EditMode)
             {
-                double factor = 1;
+                double factor;
                 double.TryParse(txtFactor.Text, out factor);
                 var result = MaterialService.CreateUnit(txtName.Text, (Logic.Data.UnitGroup)breUnitGroup.Tag, factor);
                 switch (result.Status)
@@ -113,7 +87,7 @@ namespace EKAWindowApplication.UI.Form.Defining
             if (form.ShowDialog() == DialogResult.OK)
             {
                 breUnitGroup.Tag = form.Selected;
-                breUnitGroup.Value = form.Selected.Name;
+                breUnitGroup.Value = form.Selected?.Name;
             }
         }
     }

@@ -62,12 +62,13 @@
           </Key>
           <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PasswordHash" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="InsertDate" Type="datetime" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="LastLogin" Type="datetime" />
         </EntityType>
         <EntityType Name="WareHouse">
           <Key>
@@ -78,6 +79,7 @@
           <Property Name="AllowSend" Type="bit" Nullable="false" />
           <Property Name="AllowReceive" Type="bit" Nullable="false" />
           <Property Name="UserID" Type="int" />
+          <Property Name="IsCountable" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_material_MaterialGroup">
           <End Role="MaterialGroup" Type="Self.MaterialGroup" Multiplicity="1" />
@@ -272,6 +274,9 @@
           <Parameter Name="ActorID" Type="int" Mode="In" />
           <Parameter Name="WareHouseID" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetMaterialBeforeWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="MaterialID" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetMaterialWareHouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="MaterialID" Type="int" Mode="In" />
         </Function>
@@ -426,6 +431,7 @@
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="WareHouses" Relationship="Self.FK_WareHouse_User" FromRole="User" ToRole="WareHouse" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="WareHouse">
           <Key>
@@ -439,6 +445,7 @@
           <NavigationProperty Name="MaterialExistances" Relationship="Self.FK_MaterialExistance_WareHouse" FromRole="WareHouse" ToRole="MaterialExistance" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_WareHouse1" FromRole="WareHouse" ToRole="Order" />
           <NavigationProperty Name="User" Relationship="Self.FK_WareHouse_User" FromRole="WareHouse" ToRole="User" />
+          <Property Name="IsCountable" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_material_MaterialGroup">
           <End Role="MaterialGroup" Type="Self.MaterialGroup" Multiplicity="1" />
@@ -752,6 +759,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="EKAModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -766,6 +774,7 @@
           <EntitySetMapping Name="WareHouses">
             <EntityTypeMapping TypeName="EKAModel.WareHouse">
               <MappingFragment StoreEntitySet="WareHouse">
+                <ScalarProperty Name="IsCountable" ColumnName="IsCountable" />
                 <ScalarProperty Name="WareHouseID" ColumnName="WareHouseID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="AllowSend" ColumnName="AllowSend" />

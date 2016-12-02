@@ -161,26 +161,37 @@ namespace Logic.Service
         public static ServiceResult Login(string userName, string password)
         {
             var result = new ServiceResult();
-            if (Me != null)
+            try
             {
-                result.Status = ResultStatus.Repeat;
-                return result;
+                if (Me != null)
+                {
+                    result.Status = ResultStatus.Repeat;
+                    return result;
+                }
+                var db = new EKAEntities();
+                var passwordHash = CreateMd5(password);
+                var user = db.Users.FirstOrDefault(u => u.UserName == userName && u.PasswordHash == passwordHash);
+
+                if (user == null)
+                {
+                    result.Status = ResultStatus.NotFound;
+                    return result;
+                }
+                if (!user.IsActive)
+                {
+                    result.Status = ResultStatus.AccessFail;
+                    return result;
+                }
+                Me = user;
+                user.LastLogin = db.Users.Select(u => DateTime.Now).First();
+                db.SaveChanges();
+                Me = user;
+                result.Status = ResultStatus.Ok;
             }
-            var db = new EKAEntities();
-            var passwordHash = CreateMd5(password);
-            var user = db.Users.FirstOrDefault(u => u.UserName == userName && u.PasswordHash == passwordHash);
-            if (user == null)
+            catch
             {
-                result.Status = ResultStatus.NotFound;
-                return result;
+                result.Status = ResultStatus.Unknown;
             }
-            if (!user.IsActive)
-            {
-                result.Status = ResultStatus.AccessFail;
-                return result;
-            }
-            Me = user;
-            result.Status = ResultStatus.Ok;
             return result;
         }
 

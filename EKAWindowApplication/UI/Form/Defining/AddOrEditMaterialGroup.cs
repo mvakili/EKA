@@ -8,7 +8,8 @@ namespace EKAWindowApplication.UI.Form.Defining
 {
     public partial class AddOrEditMaterialGroup : AddOrEditForm, IForm
     {
-        private Logic.Data.MaterialGroup _materialGroup;
+        public Logic.Data.MaterialGroup Selected { get; }
+
         public AddOrEditMaterialGroup()
         {
             InitializeComponent();
@@ -20,30 +21,17 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
             InitializeComponent();
             EditMode = true;
-            _materialGroup = materialGroup;
+            Selected = materialGroup;
             Bind();
-        }
-
-        public Logic.Data.MaterialGroup MaterialGroup
-        {
-            get
-            {
-                return _materialGroup;
-            }
-
-            set
-            {
-                _materialGroup = value;
-            }
         }
 
         public void Bind()
         {
             if (EditMode)
             {
-                txtName.Text = _materialGroup.Name;
-                breUnit.Tag = _materialGroup.Unit;
-                breUnit.Value = _materialGroup.Unit.Name;
+                txtName.Text = Selected.Name;
+                breUnit.Tag = Selected.Unit;
+                breUnit.Value = Selected.Unit.Name;
             }
         }
 
@@ -60,7 +48,7 @@ namespace EKAWindowApplication.UI.Form.Defining
         {
             if (EditMode)
             {
-                var result = MaterialService.EditMaterialGroup(_materialGroup, txtName.Text, (Logic.Data.Unit)breUnit.Tag);
+                var result = MaterialService.EditMaterialGroup(Selected, txtName.Text, (Logic.Data.Unit)breUnit.Tag);
                 switch (result.Status)
                 {
                     case ResultStatus.Ok:
@@ -94,7 +82,7 @@ namespace EKAWindowApplication.UI.Form.Defining
             if (form.ShowDialog() == DialogResult.OK)
             {
                 breUnit.Tag = form.Selected;
-                breUnit.Value = form.Selected.Name;
+                breUnit.Value = form.Selected?.Name;
             }
         }
     }

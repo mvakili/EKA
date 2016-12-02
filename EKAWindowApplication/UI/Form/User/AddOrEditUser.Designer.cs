@@ -1,4 +1,4 @@
-﻿namespace EKAWindowApplication.UI.Form.Defining
+﻿namespace EKAWindowApplication.UI.Form.User
 {
     partial class AddOrEditUser
     {
