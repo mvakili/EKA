@@ -14,7 +14,18 @@ namespace Logic
         {
 
             var db = new EKAEntities();
-            var x = db.CreateUnitGroup(3, "hi");
+            var x = db.Orders.ToList();
+            var now = DateTime.Now;
+            db.Orders.Add(
+                new Order()
+                {
+                    UserID = 3,
+                    MaterialID = 1,
+                    ToWareHouseID = 5,
+                    DateTime = now
+                }
+            );
+            db.SaveChanges();
             if (Service.UserService.Login("zahra", "ab148%11").Status == ResultStatus.Ok)
             {
                 Console.WriteLine("Logged in");

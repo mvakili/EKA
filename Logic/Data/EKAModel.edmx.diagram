@@ -8,20 +8,19 @@
         <EntityTypeShape EntityType="EKAModel.Material" Width="1.5" PointX="3.625" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EKAModel.MaterialExistance" Width="1.5" PointX="13.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="EKAModel.MaterialGroup" Width="1.5" PointX="3.375" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EKAModel.Order" Width="1.5" PointX="6.625" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EKAModel.Unit" Width="1.5" PointX="6.375" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="EKAModel.UnitGroup" Width="1.5" PointX="9.375" PointY="14.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EKAModel.User" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EKAModel.WareHouse" Width="1.5" PointX="13" PointY="3.625" IsExpanded="true" />
         <AssociationConnector Association="EKAModel.FK_material_MaterialGroup" ManuallyRouted="false" />
-        <AssociationConnector Association="EKAModel.FK_Order_material" ManuallyRouted="false" />
         <AssociationConnector Association="EKAModel.FK_MaterialExistance_MaterialGroup" ManuallyRouted="false" />
         <AssociationConnector Association="EKAModel.FK_MaterialExistance_WareHouse" ManuallyRouted="false" />
         <AssociationConnector Association="EKAModel.FK_MaterialGroup_Unit" ManuallyRouted="false" />
-        <AssociationConnector Association="EKAModel.FK_Order_User" ManuallyRouted="false" />
-        <AssociationConnector Association="EKAModel.FK_Order_WareHouse1" ManuallyRouted="false" />
         <AssociationConnector Association="EKAModel.FK_Unit_UnitGroup" ManuallyRouted="false" />
         <AssociationConnector Association="EKAModel.FK_WareHouse_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EKAModel.Order" Width="1.5" PointX="7.5" PointY="4.375" />
+        <AssociationConnector Association="EKAModel.FK_Order_material" />
+        <AssociationConnector Association="EKAModel.FK_Order_User" />
         <AssociationConnector Association="EKAModel.FK_Order_WareHouse" />
       </Diagram>
     </edmx:Diagrams>

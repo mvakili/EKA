@@ -116,6 +116,12 @@
     <Compile Include="UI\Form\Defining\WareHouse.Designer.cs">
       <DependentUpon>WareHouse.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Form\WareHouse\AddOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form\WareHouse\AddOrder.Designer.cs">
+      <DependentUpon>AddOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Form\User\AddOrEditUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,18 @@
     <Compile Include="UI\Form\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Form\WareHouse\Order.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form\WareHouse\Order.Designer.cs">
+      <DependentUpon>Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form\WareHouse\MaterialExistance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form\WareHouse\MaterialExistance.Designer.cs">
+      <DependentUpon>MaterialExistance.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\IForm.cs" />
     <Compile Include="UI\Template\AddOrEditForm.cs">
       <SubType>Form</SubType>
@@ -206,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Form\Defining\WareHouse.resx">
       <DependentUpon>WareHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form\WareHouse\AddOrder.resx">
+      <DependentUpon>AddOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Form\User\AddOrEditUser.resx">
       <DependentUpon>AddOrEditUser.cs</DependentUpon>
@@ -239,6 +260,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Form\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form\WareHouse\Order.resx">
+      <DependentUpon>Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form\WareHouse\MaterialExistance.resx">
+      <DependentUpon>MaterialExistance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Template\AddOrEditForm.resx">
       <DependentUpon>AddOrEditForm.cs</DependentUpon>

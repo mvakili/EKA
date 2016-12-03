@@ -6,7 +6,6 @@ namespace Logic.Service
 {
     public static class MaterialService
     {
-
         public static ServiceResult<IQueryable<Material>> GetMaterials()
         {
             var result = new ServiceResult<IQueryable<Material>>();
@@ -436,14 +435,5 @@ namespace Logic.Service
             return result;
         }
 
-        public static ServiceResult<Order> CreateNewOrder(Material material, WareHouse warehouse)
-        {
-            var result = new ServiceResult<Order>();
-            var db = new EKAEntities();
-            var spResult = db.CreateNewOrder(UserService.Me.UserID, material.MaterialID, warehouse.WareHouseID).Single().Value;
-            if (spResult > 0)
-                result.Result = db.Orders.Find(spResult);
-            return result;
-        }
     }
 }

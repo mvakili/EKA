@@ -61,7 +61,7 @@ namespace EKAWindowApplication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to اجازه ی حذف ندارید.
+        ///   Looks up a localized string similar to اجازه ی انجام عملیات را ندارید.
         /// </summary>
         internal static string AccessFail {
             get {

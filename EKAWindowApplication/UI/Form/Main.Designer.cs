@@ -157,7 +157,7 @@
             // 
             // ribbonTab1
             // 
-            this.ribbonTab1.IsSelected = true;
+            this.ribbonTab1.IsSelected = false;
             this.ribbonTab1.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup1,
             this.radRibbonBarGroup2});
@@ -262,6 +262,7 @@
             this.btnOrder.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnOrder.Text = "حواله";
             this.btnOrder.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // radRibbonBarGroup4
             // 
@@ -279,6 +280,7 @@
             this.btnMaterialExistance.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnMaterialExistance.Text = "موجودی انبار";
             this.btnMaterialExistance.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMaterialExistance.Click += new System.EventHandler(this.btnMaterialExistance_Click);
             // 
             // btnOrderReport
             // 
@@ -288,10 +290,11 @@
             this.btnOrderReport.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnOrderReport.Text = "حواله";
             this.btnOrderReport.TextAlignment = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnOrderReport.Click += new System.EventHandler(this.btnOrderReport_Click);
             // 
             // ribbonTab3
             // 
-            this.ribbonTab3.IsSelected = false;
+            this.ribbonTab3.IsSelected = true;
             this.ribbonTab3.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radRibbonBarGroup5});
             this.ribbonTab3.Name = "ribbonTab3";

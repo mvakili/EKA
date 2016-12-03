@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using EKAWindowApplication.UI.Form.Defining;
+using EKAWindowApplication.UI.Form.WareHouse;
 using Logic.Service;
 using Telerik.WinControls.UI;
 
 namespace EKAWindowApplication.UI.Form
 {
-    public partial class Main : Telerik.WinControls.UI.RadForm, IForm
+    public partial class Main : RadForm, IForm
     {
         public Main()
         {
@@ -35,7 +31,7 @@ namespace EKAWindowApplication.UI.Form
             {
                 foreach (var t in radPageView1.Pages)
                 {
-                    if (t.Tag.ToString().CompareTo(frm.Text) != 0) continue;
+                    if (string.Compare(t.Tag.ToString(), frm.Text, StringComparison.Ordinal) != 0) continue;
                     t.Select();
                     radPageView1.SelectedPage = t;
                     return;
@@ -90,7 +86,22 @@ namespace EKAWindowApplication.UI.Form
 
         private void btnWareHouse_Click(object sender, EventArgs e)
         {
-            ShowForm(this,new WareHouse());
+            ShowForm(this,new Defining.WareHouse());
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            new AddOrder().ShowDialog();
+        }
+
+        private void btnMaterialExistance_Click(object sender, EventArgs e)
+        {
+            ShowForm(this, new MaterialExistance());
+        }
+
+        private void btnOrderReport_Click(object sender, EventArgs e)
+        {
+            ShowForm(this, new Order());
         }
     }
 }

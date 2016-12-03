@@ -81,10 +81,11 @@ namespace Logic.Service
         public static ServiceResult<bool> IsFreeUserName(string userName)
         {
             var result = new ServiceResult<bool>();
-            var db = new EKAEntities();
+            
 
             try
             {
+                var db = new EKAEntities();
                 if (userName.Length < 3)
                 {
                     result.Result = false;
@@ -196,7 +197,6 @@ namespace Logic.Service
                     result.Status = ResultStatus.AccessFail;
                     return result;
                 }
-                Me = user;
                 user.LastLogin = db.Users.Select(u => DateTime.Now).First();
                 db.SaveChanges();
                 Me = user;

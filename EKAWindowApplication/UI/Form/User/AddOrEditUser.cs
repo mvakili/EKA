@@ -82,6 +82,7 @@ namespace EKAWindowApplication.UI.Form.User
                         MessageBox.Show(Resources.UnknownError);
                         break;
                 }
+
                 Close();
             }
         }

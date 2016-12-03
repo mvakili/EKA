@@ -62,9 +62,9 @@ namespace EKAWindowApplication.UI.Form.Defining
                     GroupName = r.MaterialGroup.Name,
                     r.Qty,
                     Unit = r.MaterialGroup.Unit.Name,
-                    WareHouseName = r.Orders.OrderByDescending(u => u.DateTime).Select(u => u.WareHouse.Name).FirstOrDefault() ?? ""
+                    WareHouseName = r.Orders.OrderByDescending(u => u.DateTime).ThenBy(u => u.OrderID).Select(u => u.WareHouse.Name).FirstOrDefault() ?? ""
 
-                }).ToList();
+                }).OrderByDescending(u => u.MaterialID).ToList();
             rgvList.BestFitColumns();
         }
 

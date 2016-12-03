@@ -18,11 +18,10 @@ namespace Logic.Data
         public int UserID { get; set; }
         public int ToWareHouseID { get; set; }
         public int MaterialID { get; set; }
-        public Nullable<System.DateTime> DateTime { get; set; }
+        public System.DateTime DateTime { get; set; }
     
         public virtual Material Material { get; set; }
         public virtual User User { get; set; }
         public virtual WareHouse WareHouse { get; set; }
-        public virtual WareHouse WareHouse1 { get; set; }
     }
 }

@@ -30,11 +30,11 @@ namespace Logic.Data
         public virtual DbSet<Material> Materials { get; set; }
         public virtual DbSet<MaterialExistance> MaterialExistances { get; set; }
         public virtual DbSet<MaterialGroup> MaterialGroups { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<UnitGroup> UnitGroups { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<WareHouse> WareHouses { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     
         public virtual ObjectResult<Nullable<int>> ActivateUser(Nullable<int> actorID, Nullable<int> userID)
         {

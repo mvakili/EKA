@@ -120,5 +120,92 @@ namespace Logic.Service
 
             return result;
         }
+
+
+        public static ServiceResult<Order> CreateNewOrder(Material material, WareHouse toWarehouse)
+        {
+            var fromWareHouse =
+                material?.Orders.OrderByDescending(u => u.DateTime).ThenBy(u => u.OrderID).Select(u => u.WareHouse).FirstOrDefault();
+            var result = new ServiceResult<Order>();
+
+            if (material == null || toWarehouse == null)
+            {
+                result.Status = ResultStatus.InvalidParameter;
+            }
+            else if (fromWareHouse != null && (!UserService.Me.IsAdmin && fromWareHouse.User.UserID != UserService.Me.UserID))
+            {
+                result.Status = ResultStatus.AccessFail;
+            }
+            else if (fromWareHouse != null && !fromWareHouse.AllowSend)
+            {
+                result.Status = ResultStatus.AccessFail;
+            }
+            else if (!toWarehouse.AllowReceive)
+            {
+                result.Status = ResultStatus.AccessFail;
+            }
+            else
+            {
+                try
+                {
+
+                    var db = new EKAEntities();
+                    var userId = UserService.Me.UserID;
+                    var now = DateTime.Now;
+                    var order = new Order
+                    {
+                        ToWareHouseID = toWarehouse.WareHouseID,
+                        MaterialID = material.MaterialID,
+                        UserID = userId,
+                        DateTime = now
+                    };
+                    db.Orders.Add(order);
+                    db.SaveChanges();
+                    result.Result = order;
+                }
+                catch (Exception ex)
+                {
+                    // ignored
+                }
+            }
+
+
+
+            return result;
+        }
+
+        public static ServiceResult<IQueryable<Order>> GetOrders()
+        {
+            var result = new ServiceResult<IQueryable<Order>>();
+            try
+            {
+
+                var db = new EKAEntities();
+                result.Result = db.Orders;
+            }
+            catch
+            {
+                result.Status = ResultStatus.Unknown;
+            }
+
+            return result;
+        }
+
+        public static ServiceResult<IQueryable<MaterialExistance>> GetMaterialExistances()
+        {
+            var result = new ServiceResult<IQueryable<MaterialExistance>>();
+            try
+            {
+
+                var db = new EKAEntities();
+                result.Result = db.MaterialExistances.Where(u => u.Qty != 0);
+            }
+            catch
+            {
+                result.Status = ResultStatus.Unknown;
+            }
+
+            return result;
+        }
     }
 }

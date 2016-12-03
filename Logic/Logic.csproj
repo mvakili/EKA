@@ -149,7 +149,6 @@
     <Content Include="Data\EKAModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EKAModel.edmx</DependentUpon>
-      <LastGenOutput>EKAModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Data\EKAModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

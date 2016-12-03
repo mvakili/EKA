@@ -69,7 +69,7 @@ namespace EKAWindowApplication.UI.Form.User
                     IsAdmin = r.IsAdmin ? @"بله" : @"خیر",
                     InsertDate = PersianDate.ConvertDate.ToFa(r.InsertDate)
 
-                }).ToList();
+                }).OrderByDescending(u => u.UserID).ToList();
             rgvList.BestFitColumns();
         }
 

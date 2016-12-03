@@ -38,7 +38,7 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="ToWareHouseID" Type="int" Nullable="false" />
           <Property Name="MaterialID" Type="int" Nullable="false" />
-          <Property Name="DateTime" Type="datetime" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -361,7 +361,7 @@
           <Property Name="MaterialGroupID" Type="Int32" Nullable="false" />
           <Property Name="Qty" Type="Decimal" Precision="20" Scale="3" Nullable="false" />
           <NavigationProperty Name="MaterialGroup" Relationship="Self.FK_material_MaterialGroup" FromRole="Material" ToRole="MaterialGroup" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_material" FromRole="Material" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="EKAModel.FK_Order_material" FromRole="Material" ToRole="Order" />
         </EntityType>
         <EntityType Name="MaterialExistance">
           <Key>
@@ -384,20 +384,6 @@
           <NavigationProperty Name="Materials" Relationship="Self.FK_material_MaterialGroup" FromRole="MaterialGroup" ToRole="Material" />
           <NavigationProperty Name="MaterialExistances" Relationship="Self.FK_MaterialExistance_MaterialGroup" FromRole="MaterialGroup" ToRole="MaterialExistance" />
           <NavigationProperty Name="Unit" Relationship="Self.FK_MaterialGroup_Unit" FromRole="MaterialGroup" ToRole="Unit" />
-        </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="OrderID" />
-          </Key>
-          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="ToWareHouseID" Type="Int32" Nullable="false" />
-          <Property Name="MaterialID" Type="Int32" Nullable="false" />
-          <Property Name="DateTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Material" Relationship="Self.FK_Order_material" FromRole="Order" ToRole="Material" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
-          <NavigationProperty Name="WareHouse" Relationship="Self.FK_Order_WareHouse1" FromRole="Order" ToRole="WareHouse" />
-          <NavigationProperty Name="WareHouse1" Relationship="EKAModel.FK_Order_WareHouse" FromRole="Order" ToRole="WareHouse" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -430,9 +416,9 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="WareHouses" Relationship="Self.FK_WareHouse_User" FromRole="User" ToRole="WareHouse" />
           <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Orders" Relationship="EKAModel.FK_Order_User" FromRole="User" ToRole="Order" />
         </EntityType>
         <EntityType Name="WareHouse">
           <Key>
@@ -457,18 +443,6 @@
             </Principal>
             <Dependent Role="Material">
               <PropertyRef Name="MaterialGroupID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_material">
-          <End Role="Material" Type="Self.Material" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Material">
-              <PropertyRef Name="MaterialID" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="MaterialID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -508,30 +482,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_WareHouse1">
-          <End Role="WareHouse" Type="Self.WareHouse" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="WareHouse">
-              <PropertyRef Name="WareHouseID" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="OrderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Unit_UnitGroup">
           <End Role="UnitGroup" Type="Self.UnitGroup" Multiplicity="1" />
           <End Role="Unit" Type="Self.Unit" Multiplicity="*" />
@@ -560,7 +510,6 @@
           <EntitySet Name="Materials" EntityType="Self.Material" />
           <EntitySet Name="MaterialExistances" EntityType="Self.MaterialExistance" />
           <EntitySet Name="MaterialGroups" EntityType="Self.MaterialGroup" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Units" EntityType="Self.Unit" />
           <EntitySet Name="UnitGroups" EntityType="Self.UnitGroup" />
           <EntitySet Name="Users" EntityType="Self.User" />
@@ -568,10 +517,6 @@
           <AssociationSet Name="FK_material_MaterialGroup" Association="Self.FK_material_MaterialGroup">
             <End Role="MaterialGroup" EntitySet="MaterialGroups" />
             <End Role="Material" EntitySet="Materials" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_material" Association="Self.FK_Order_material">
-            <End Role="Material" EntitySet="Materials" />
-            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_MaterialExistance_MaterialGroup" Association="Self.FK_MaterialExistance_MaterialGroup">
             <End Role="MaterialGroup" EntitySet="MaterialGroups" />
@@ -584,14 +529,6 @@
           <AssociationSet Name="FK_MaterialGroup_Unit" Association="Self.FK_MaterialGroup_Unit">
             <End Role="Unit" EntitySet="Units" />
             <End Role="MaterialGroup" EntitySet="MaterialGroups" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_WareHouse1" Association="Self.FK_Order_WareHouse1">
-            <End Role="WareHouse" EntitySet="WareHouses" />
-            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Unit_UnitGroup" Association="Self.FK_Unit_UnitGroup">
             <End Role="UnitGroup" EntitySet="UnitGroups" />
@@ -693,11 +630,57 @@
             <Parameter Name="ActorID" Mode="In" Type="Int32" />
             <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="Orders" EntityType="EKAModel.Order" />
+          <AssociationSet Name="FK_Order_material" Association="EKAModel.FK_Order_material">
+            <End Role="Material" EntitySet="Materials" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="EKAModel.FK_Order_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
           <AssociationSet Name="FK_Order_WareHouse" Association="EKAModel.FK_Order_WareHouse">
             <End Role="WareHouse" EntitySet="WareHouses" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ToWareHouseID" Type="Int32" Nullable="false" />
+          <Property Name="MaterialID" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Material" Relationship="EKAModel.FK_Order_material" FromRole="Order" ToRole="Material" />
+          <NavigationProperty Name="User" Relationship="EKAModel.FK_Order_User" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="WareHouse" Relationship="EKAModel.FK_Order_WareHouse" FromRole="Order" ToRole="WareHouse" />
+        </EntityType>
+        <Association Name="FK_Order_material">
+          <End Type="EKAModel.Material" Role="Material" Multiplicity="1" />
+          <End Type="EKAModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="MaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Type="EKAModel.User" Role="User" Multiplicity="1" />
+          <End Type="EKAModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_WareHouse">
           <End Type="EKAModel.WareHouse" Role="WareHouse" Multiplicity="1" />
           <End Type="EKAModel.Order" Role="Order" Multiplicity="*" />
@@ -741,17 +724,6 @@
                 <ScalarProperty Name="MaterialGroupID" ColumnName="MaterialGroupID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="UnitID" ColumnName="UnitID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="EKAModel.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="ToWareHouseID" ColumnName="ToWareHouseID" />
-                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
-                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -819,6 +791,17 @@
           <FunctionImportMapping FunctionImportName="EnableAllowSendWareHouse" FunctionName="EKAModel.Store.EnableAllowSendWareHouse" />
           <FunctionImportMapping FunctionImportName="RemoveFromAdminUsers" FunctionName="EKAModel.Store.RemoveFromAdminUsers" />
           <FunctionImportMapping FunctionImportName="AddToAdminUsers" FunctionName="EKAModel.Store.AddToAdminUsers" />
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="EKAModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+                <ScalarProperty Name="ToWareHouseID" ColumnName="ToWareHouseID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
