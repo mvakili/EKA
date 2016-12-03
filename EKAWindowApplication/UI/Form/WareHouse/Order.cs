@@ -43,7 +43,7 @@ namespace EKAWindowApplication.UI.Form.WareHouse
                 MessageBox.Show(Resources.BindingError);
                 return;
             }
-            var materialId = ((Material) breMaterialGroup.Tag)?.MaterialGroupID ?? 0;
+            var materialId = ((Material) breMaterialGroup.Tag)?.MaterialID ?? 0;
             var wareHouseId = ((Logic.Data.WareHouse)breWareHouse.Tag)?.WareHouseID ?? 0;
             rgvList.DataSource = _data.Result
                 .Where(r =>
