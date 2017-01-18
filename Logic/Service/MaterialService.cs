@@ -13,6 +13,7 @@ namespace Logic.Service
             {
                 
                 var db = new EKAEntities();
+            
                 result.Result = db.Materials;
             }
             catch
@@ -28,6 +29,7 @@ namespace Logic.Service
             if (!UserService.Me.IsAdmin)
             {
                 result.Status = ResultStatus.AccessFail;
+
             }
             else
             {

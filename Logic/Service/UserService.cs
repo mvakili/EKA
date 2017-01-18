@@ -178,7 +178,7 @@ namespace Logic.Service
             var result = new ServiceResult();
             try
             {
-                if (Me != null)
+                if (IsLoggedIn)
                 {
                     result.Status = ResultStatus.Repeat;
                     return result;

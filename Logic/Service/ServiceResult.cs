@@ -16,7 +16,6 @@ namespace Logic.Service
     public class ServiceResult
     {
         public ResultStatus Status { get; set; } = ResultStatus.Unknown;
-        public string Message { get; set; }
         public ServiceResult()
         {
         }
@@ -48,11 +47,15 @@ namespace Logic.Service
         }
 
         public ServiceResult()
-        { }
+        {
+            
+        }
         public ServiceResult(T result, ResultStatus status = ResultStatus.Ok)
             : base(status)
         {
+            
             Result = result;
+
         }
     }
 }
